@@ -1,4 +1,4 @@
-# FlaskApp
+# Hospital FlaskApp
 
 Simple application with authentication and CRUD functionality using the Python Flask micro-framework
 
@@ -14,4 +14,6 @@ To use this template, your computer needs:
 ```bash
 python app.py
 ```
+Dev by
+Mahmudamen 
 
