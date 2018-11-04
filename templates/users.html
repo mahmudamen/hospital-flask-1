@@ -1,0 +1,48 @@
+{% extends '_layoutUser.html' %}
+{% block body %}
+<body>
+<div id="content" class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="b-panal" class="panel panel-info" style="margin-bottom:5%" data-sortable-id="index-3">
+                <div class="panel-heading" style="height: 50%;">
+                    <label class="panel-title" style="font-size:13pt;">  قائمة الموظفين </label>
+                    <div class="btn-group m-r-5 pull-left">
+                        <button class="btn-group-sm btn-icon btn-square btn-info pull-left" title="تبديل " id="btwaitexpand"><i class="fa fa-expand"></i></button>
+                        <button action="{{url_for('tab')}}" method="post" class="btn-group-sm btn-icon btn-square btn-success pull-left" title="تحديث " id="refresh"><i class="fa fa-repeat"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body" id="panelwaitlist" style="max-height:400px;   min-height:200px; padding:10px">
+
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for article in articles %}
+      <tr>
+        <td>{{article.id}}</td>
+        <td>{{article.name}}</td>
+        <td><a href="edit_article/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_article', id=article.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+                </div>
+            </div>
+        <!-- end col-4 -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends '_layoutHome.html' %}
+
+
+
+
+{% block body %}
+<body>
+<div id="content" class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="b-panal" class="panel panel-info" style="margin-bottom:5%" >
+                <div class="panel-heading" style="height: 40%;">
+                    <label class="panel-title" style="font-size:13pt;">  Hopital App  </label>
+                </div>
+                <div class="panel-body" id="panelwaitlist" style="max-height:400px;   min-height:200px; padding:10px">
+                    <h1>تسجيل الدخول</h1>
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <input type="text" name="username" class="form-control" value={{request.form.username}}>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" name="password" class="form-control" value={{request.form.password}}>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        <!-- end col-4 -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+</html>
+
