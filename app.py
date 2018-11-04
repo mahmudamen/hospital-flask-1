@@ -216,12 +216,12 @@ def dashboard():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM articles WHERE author = %s", [session['username']])
+    result = cur.execute("SELECT * FROM PatientList ")
 
-    articles = cur.fetchall()
+    patients = cur.fetchall()
 
     if result > 0:
-        return render_template('dashboard.html', articles=articles)
+        return render_template('dashboard.html', patients=patients)
     else:
         msg = 'No Articles Found'
         return render_template('dashboard.html', msg=msg)
