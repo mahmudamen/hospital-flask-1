@@ -15,13 +15,13 @@
     </tr>
     {% for patient in patients %}
       <tr>
-        <td>{{patients.ID}}</td>
-        <td>{{patients.Name}}</td>
-        <td>{{patients.Address}}</td>
-        <td>{{patients.CreateDate}}</td>
-        <td><a href="edit_article/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>{{patient.ID}}</td>
+        <td>{{patient.PatientName}}</td>
+        <td>{{patient.Address}}</td>
+        <td>{{patient.CreateDate}}</td>
+        <td><a href="edit_article/{{patient.id}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
-          <form action="{{url_for('delete_article', id=article.id)}}" method="post">
+          <form action="{{url_for('delete_article', id=patient.id)}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete" class="btn btn-danger">
           </form>

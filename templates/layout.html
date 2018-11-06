@@ -19,15 +19,17 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.gritter.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.style-responsive.min.css') }}">
 
-    <script src="static/jquery-1.10.2.min.js"></script>
-    <script src="static/jquery-ui.min.js"></script>
-    <script src="static/respond.min.js"></script>
-    <script src="static/apps.min.js"></script>
-    <script src="static/app.js"></script>
-    <script src="static/dts.js"></script>
-    <script src="static/select2.full.min.js"></script>
-    <script src="static/bootstrap.min.js"></script>
-    <title id="title">hospital</title>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='respond.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='apps.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='apps.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='dts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='select2.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+    <title id="title">HospitalApp</title>
   </head>
   <body>
     {% include 'includes/_navbar.html' %}
