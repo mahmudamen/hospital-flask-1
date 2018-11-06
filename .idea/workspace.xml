@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8a502d9-76b7-4e02-8475-d73d6dd55d12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/js/q.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery-1.9.0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/q.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/q.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
     <session id="1718251389">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
-          <entry key="project.open.time.10" value="3" />
+          <entry key="project.closed" value="16" />
+          <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="1" />
@@ -28,49 +27,49 @@
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="4" />
           <entry key="grant" value="4" />
-          <entry key="html" value="95" />
-          <entry key="js" value="1" />
+          <entry key="html" value="101" />
+          <entry key="js" value="4" />
           <entry key="md" value="1" />
-          <entry key="py" value="45" />
+          <entry key="py" value="46" />
           <entry key="xhtml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="4" />
-          <entry key="HTML" value="95" />
-          <entry key="JavaScript" value="1" />
+          <entry key="HTML" value="101" />
+          <entry key="JavaScript" value="4" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="45" />
+          <entry key="Python" value="46" />
           <entry key="XHTML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="22" />
-          <entry key="html" value="983" />
-          <entry key="js" value="1" />
+          <entry key="html" value="1001" />
+          <entry key="js" value="27" />
           <entry key="md" value="61" />
-          <entry key="py" value="350" />
+          <entry key="py" value="375" />
           <entry key="txt" value="225" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="22" />
-          <entry key="HTML" value="983" />
-          <entry key="JavaScript" value="1" />
+          <entry key="HTML" value="1001" />
+          <entry key="JavaScript" value="27" />
           <entry key="Markdown" value="61" />
           <entry key="PLAIN_TEXT" value="225" />
-          <entry key="Python" value="350" />
+          <entry key="Python" value="375" />
         </counts>
       </usages-collector>
     </session>
@@ -79,7 +78,49 @@
     <favorites_list name="myflaskapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/q.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="169" selection-start-line="7" selection-start-column="169" selection-end-line="7" selection-end-column="169" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="161" column="41" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#107#0" expanded="true" />
+                <element signature="e#924#959#0" />
+                <element signature="e#1009#1045#0" />
+                <element signature="e#1107#1487#0" />
+                <element signature="e#1563#1795#0" />
+                <element signature="e#1850#2261#0" />
+                <element signature="e#2349#3158#0" />
+                <element signature="e#5215#5687#0" />
+                <element signature="e#5925#6412#0" />
+                <element signature="e#6696#7302#0" />
+                <element signature="e#7439#8386#0" />
+                <element signature="e#8507#8806#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/users.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,6 +140,7 @@
       <find>delete</find>
       <find>users</find>
       <find>maxcdn</find>
+      <find>caonnection</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,16 +156,17 @@
         <option value="$PROJECT_DIR$/templates/register.html" />
         <option value="$PROJECT_DIR$/templates/includes/_navbaruser.html" />
         <option value="$PROJECT_DIR$/templates/_layoutUser.xhtml" />
-        <option value="$PROJECT_DIR$/templates/_layoutUser.html" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/templates/_layoutHome.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/static/js/jquery-1.9.0.js" />
+        <option value="$PROJECT_DIR$/templates/_layoutUser.html" />
         <option value="$PROJECT_DIR$/templates/users.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/static/js/q.js" />
       </list>
     </option>
   </component>
@@ -138,23 +181,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="myflaskapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myflaskapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
               <item name="myflaskapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="myflaskapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myflaskapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -176,12 +219,13 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/Scripts" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Scripts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -307,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541354120127</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="python and for loop html5 Dashboard change">
+      <created>1541494993357</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1541494993357</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -321,8 +372,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="702" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.23257576" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.23636363" />
       <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info id="Favorites" order="2" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -445,13 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/_layoutUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/_layoutHome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -483,24 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="218" column="52" selection-start-line="218" selection-start-column="52" selection-end-line="218" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#107#0" expanded="true" />
-            <element signature="e#1107#1487#0" />
-            <element signature="e#1563#1795#0" />
-            <element signature="e#1850#2261#0" />
-            <element signature="e#2349#3158#0" />
-            <element signature="e#3237#4364#0" />
-            <element signature="e#4417#4664#0" />
-            <element signature="e#4713#5163#0" />
-            <element signature="e#5215#5687#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -510,8 +537,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+        <state relative-caret-position="146">
+          <caret line="22" selection-start-line="22" selection-end-line="29" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/_layoutUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -522,17 +556,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/q.js">
+    <entry file="file://$PROJECT_DIR$/templates/users.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state relative-caret-position="46">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/users.html">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="70">
+          <caret line="161" column="41" selection-start-line="161" selection-start-column="41" selection-end-line="161" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#107#0" expanded="true" />
+            <element signature="e#924#959#0" />
+            <element signature="e#1009#1045#0" />
+            <element signature="e#1107#1487#0" />
+            <element signature="e#1563#1795#0" />
+            <element signature="e#1850#2261#0" />
+            <element signature="e#2349#3158#0" />
+            <element signature="e#5215#5687#0" />
+            <element signature="e#5925#6412#0" />
+            <element signature="e#6696#7302#0" />
+            <element signature="e#7439#8386#0" />
+            <element signature="e#8507#8806#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/q.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="169" selection-start-line="7" selection-start-column="169" selection-end-line="7" selection-end-column="169" />
         </state>
       </provider>
     </entry>

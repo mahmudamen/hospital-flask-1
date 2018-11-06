@@ -159,11 +159,11 @@ def is_logged_in(f):
             flash('Unauthorized, Please login', 'danger')
             return redirect(url_for('login'))
     return wrap
-@app.route('/tab')
+@app.route('/tab',methods=['GET', 'POST'])
 @is_logged_in
 def tab():
     # Create cursor
-    cur = mysql.caonnection.cursor()
+    cur = mysql.connection.cursor()
 
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
@@ -171,7 +171,7 @@ def tab():
     result = cur.execute("SELECT * FROM users  ")
     articles = cur.fetchall()
     if result > 0:
-        return jsonify(aadata = articles)
+        return jsonify(data = articles)
 
     else:
         msg = 'No users  Found'
