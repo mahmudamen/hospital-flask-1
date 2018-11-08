@@ -229,26 +229,27 @@ def dashboard():
     cur.close()
 
 # Article Form Class
-class ArticleForm(Form):
+class PatientForm(Form):
     PatientName = StringField('patient name', [validators.Length(min=1, max=200)])
     Address = TextAreaField('addres', [validators.Length(min=10)])
-    age = TextAreaField('age', [validators.Length(min=2)])
+
+
 
 # Add Article
 @app.route('/add_article', methods=['GET', 'POST'])
 @is_logged_in
 def add_article():
-    form = ArticleForm(request.form)
+    form = PatientForm(request.form)
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
-        age = form.age.data
+
 
         # Create Cursor
         cur = mysql.connection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO articles( PatientName, Address ,age ,UseriD) VALUES(%s, %s, %s)",(PatientName, Address, age , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address ,age,UseriD) VALUES(%s, %s, %s)",(PatientName, Address,age , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -261,7 +262,32 @@ def add_article():
         return redirect(url_for('dashboard'))
 
     return render_template('add_article.html', form=form)
+# Add patient
+@app.route('/add_patient', methods=['GET', 'POST'])
+def add_patient():
+    form = PatientForm(request.form)
+    if request.method == 'POST' and form.validate():
+        PatientName = form.PatientName.data
+        Address = form.Address.data
 
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+
+        # Execute
+        cur.execute("INSERT INTO PatientList( PatientName, Address ,UseriD) VALUES(%s, %s, %s)",(PatientName, Address , session['username']))
+
+        # Commit to DB
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('Article Created', 'success')
+
+        return redirect(url_for('dashboard'))
+
+    return render_template('add_patient.html', form=form)
 
 # Edit Articledelete_article
 @app.route('/edit_article/<string:id>', methods=['GET', 'POST'])
