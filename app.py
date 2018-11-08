@@ -230,8 +230,9 @@ def dashboard():
 
 # Article Form Class
 class ArticleForm(Form):
-    title = StringField('Title', [validators.Length(min=1, max=200)])
-    body = TextAreaField('Body', [validators.Length(min=30)])
+    PatientName = StringField('patient name', [validators.Length(min=1, max=200)])
+    Address = TextAreaField('addres', [validators.Length(min=10)])
+    age = TextAreaField('age', [validators.Length(min=2)])
 
 # Add Article
 @app.route('/add_article', methods=['GET', 'POST'])
@@ -239,14 +240,15 @@ class ArticleForm(Form):
 def add_article():
     form = ArticleForm(request.form)
     if request.method == 'POST' and form.validate():
-        title = form.title.data
-        body = form.body.data
+        PatientName = form.PatientName.data
+        Address = form.Address.data
+        age = form.age.data
 
         # Create Cursor
         cur = mysql.connection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
+        cur.execute("INSERT INTO articles( PatientName, Address ,age ,UseriD) VALUES(%s, %s, %s)",(PatientName, Address, age , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
