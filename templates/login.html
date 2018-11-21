@@ -3,13 +3,18 @@
 
 {% block body %}
 
-<body>
-<div id="content" class="content">
-    <div class="row">
-            <div id="b-panal" class="panel panel-info" style="margin-bottom:5%" >
-                <div class="panel-body" id="panelwaitlist" style="max-height:400px;   min-height:200px; padding:10px">
-                    <h1>تسجيل الدخول</h1>
-                <form action="" method="POST">
+</body>
+<div id="mdshift">
+    <div class="modal-med">
+        <div class="modal-content">
+              <form method="POST" action="">
+            <div class="modal-header">
+                <label class="modal-title">اضافة مريض </label>
+            </div>
+                  <form action="" method="POST">
+            <div class="modal-body">
+                <div class="row">
+
                     <div class="form-group">
                         <label>اسم المستخدم</label>
                         <input type="text" name="username" class="form-control" value={{request.form.username}}>
@@ -18,15 +23,17 @@
                         <label>كلمة المرور</label>
                         <input type="password" name="password" class="form-control" value={{request.form.password}}>
                     </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
                 </div>
             </div>
-        <!-- end col-4 -->
+            <div class="modal-footer">
+                <p><input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+                  </form>
+        </div>
     </div>
 </div>
-{% endblock %}
-</body>
+  </form>
 
+{% endblock %}
 
 

@@ -30,11 +30,6 @@ def index():
 def about():
     return render_template('about.html')
 
-
-
-
-
-
 # Articles
 @app.route('/articles')
 def articles():
@@ -80,11 +75,11 @@ class RegisterForm(Form):
     ])
     confirm = PasswordField('Confirm Password')
 
-
 # User Register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
+
     if request.method == 'POST' and form.validate():
         name = form.name.data
         email = form.email.data
@@ -107,8 +102,6 @@ def register():
 
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
-
-
 # User login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -178,7 +171,7 @@ def tab():
     cur.close()
 @app.route('/users')
 @is_logged_in
-def user():
+def users():
     # Create cursor
     cur = mysql.connection.cursor()
 
@@ -225,11 +218,15 @@ def dashboard():
         return render_template('dashboard.html', msg=msg)
     # Close connection
     cur.close()
-
+@app.route('/user')
+@is_logged_in
+def user():
+    return  render_template('user.html')
 # Article Form Class
 class PatientForm(Form):
-    PatientName = StringField('patient name', [validators.Length(min=1, max=200)])
-    Address = TextAreaField('addres', [validators.Length(min=10)])
+    PatientName = StringField('PatientName', [validators.Length(min=1, max=200)])
+    Address = TextAreaField('Address', [validators.Length(min=10)])
+    ServID  = TextAreaField('ServID')
 
 # Article Form Class
 class usersForm(Form):
@@ -237,20 +234,20 @@ class usersForm(Form):
     email = TextAreaField('email', [validators.Length(min=10)])
 
 # Add Article
-@app.route('/add_article', methods=['GET', 'POST'])
+@app.route('/add_user', methods=['GET', 'POST'])
 @is_logged_in
-def add_article():
-    form = PatientForm(request.form)
+def add_user():
+    form = usersForm(request.form)
     if request.method == 'POST' and form.validate():
-        PatientName = form.PatientName.data
-        Address = form.Address.data
+        name = form.name.data
+        email = form.email.data
 
 
         # Create Cursor
-        cur = mysql.connection.cursor()
+        cur = mysql.aboutconnection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address ,age,UseriD) VALUES(%s, %s, %s)",(PatientName, Address,age , session['username']))
+        cur.execute("INSERT INTO users( name, email) VALUES(%s, %s)",(name, email))
 
         # Commit to DB
         mysql.connection.commit()
@@ -260,7 +257,7 @@ def add_article():
 
         flash('Article Created', 'success')
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('users'))
 
     return render_template('add_article.html', form=form)
 # Add patient
@@ -270,13 +267,13 @@ def add_patient():
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
-
+        ServID = form.ServID.data
 
         # Create Cursor
         cur = mysql.connection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address ,UseriD) VALUES(%s, %s, %s)",(PatientName, Address , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -329,6 +326,45 @@ def edit_user(id):
         return redirect(url_for('user'))
 
     return render_template('edit_user.html', form=form)
+# Edit Articledelete_article
+@app.route('/edit_patient/<string:id>', methods=['GET', 'POST'])
+@is_logged_in
+def edit_patient(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get article by id
+    result = cur.execute("SELECT * FROM users WHERE id = %s", [id])
+
+    article = cur.fetchone()
+    cur.close()
+    # Get form
+    form = usersForm(request.form)
+
+    # Populate article form fields
+    form.PatientName.data = article['PatientName']
+    form.Address.data = article['Address']
+
+    if request.method == 'POST' and form.validate():
+        PatientName = request.form['PatientName']
+        Address = request.form['Address']
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+        app.logger.info(email)
+        # Execute
+        cur.execute ("UPDATE users SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
+        # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('Article Updated', 'success')
+
+        return redirect(url_for('dashboard'))
+
+    return render_template('edit_user.html', form=form)
 
 # Delete Article
 @app.route('/delete_user/<string:id>', methods=['POST'])
@@ -348,8 +384,25 @@ def delete_user(id):
 
     flash('user Deleted', 'success')
 
-    return redirect(url_for('users'))
+    return redirect(url_for('user'))
+@app.route('/delete_patient/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_patient(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
 
+    # Execute
+    cur.execute("DELETE FROM PatientList WHERE id = %s", [id])
+
+    # Commit to DB
+    mysql.connection.commit()
+
+    #Close connection
+    cur.close()
+
+    flash('Patient Deleted', 'success')
+
+    return redirect(url_for('dashboard'))
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(debug=True)

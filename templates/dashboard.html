@@ -19,9 +19,9 @@
         <td>{{patient.PatientName}}</td>
         <td>{{patient.Address}}</td>
         <td>{{patient.CreateDate}}</td>
-        <td><a href="edit_article/{{patient.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td><a href="edit_patient/{{patient.id}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
-          <form action="{{url_for('delete_article', id=patient.id)}}" method="post">
+          <form action="{{url_for('delete_patient', id=patient.ID)}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete" class="btn btn-danger">
           </form>

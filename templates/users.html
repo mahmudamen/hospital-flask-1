@@ -1,23 +1,20 @@
 {% extends '_layoutUser.html' %}
 {% block body %}
 <body>
-<div id="content" class="content">
-    <div class="row">
+  <a class="btn btn-success" href="/register"> اضافة مستخدم جديد</a>
+  <hr>
                 <div class="panel-heading" style="height: 50%;">
                     <label class="panel-title" style="font-size:13pt;">  قائمة الموظفين </label>
-                    <div class="btn-group m-r-5 pull-left">
-                        <button class="btn-group-sm btn-icon btn-square btn-info pull-left" title="تبديل " id="btwaitexpand"><i class="fa fa-expand"></i></button>
-                        <button action="{{url_for('tab')}}" method="post" class="btn-group-sm btn-icon btn-square btn-success pull-left" title="تحديث " id="refresh"><i class="fa fa-repeat"></i></button>
-                    </div>
                 </div>
-                <div class="panel-body" id="panelwaitlist" style="max-height:400px;   min-height:200px; padding:10px">
+                <div class="panel-body" id="panelwaitlist" style="max-height:100%;   min-height:100%; padding:5px">
 
   <table id="patlist" class="table table-striped">
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th></th>
-      <th></th>
+      <th>Email</th>
+      <th>Edit</th>
+        <th>Delete</th>
     </tr>
     {% for article in articles %}
       <tr>
@@ -37,14 +34,6 @@
 
                 </div>
         <!-- end col-4 -->
-
-    </div>
-</div>
-
-
-
-
-
 </body>
 {% endblock %}
 </html>

@@ -8,6 +8,8 @@
     <p class="lead">Hospital</p>
     {% if session.logged_in == NULL %}
       <a href="/login" class="btn btn-success btn-lg">Login</a>
+    {% elif session.logged_in != NULL %}
+    <a href="/dashboard" class="btn btn-success btn-lg">Go DashBoard</a>
     {% endif %}
   </div>
 {% endblock %}
