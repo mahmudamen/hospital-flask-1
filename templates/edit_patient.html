@@ -1,14 +1,14 @@
-{% extends 'layout.html' %}
+{% extends '_layoutUser.html' %}
 
 {% block body %}
-  <h1>Edit Article</h1>
+  <h1></h1>
   {% from "includes/_formhelpers.html" import render_field %}
   <form method="POST" action="">
     <div class="form-group">
       {{ render_field(form.PatientName, class_="form-control") }}
     </div>
     <div class="form-group">
-      {{ render_field(form.Adress, class_="form-control", id="editor") }}
+      {{ render_field(form.Address, class_="form-control", id="editor") }}
     </div>
     <p><input class="btn btn-primary" type="submit" value="Submit">
   </form>

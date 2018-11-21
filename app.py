@@ -334,12 +334,12 @@ def edit_patient(id):
     cur = mysql.connection.cursor()
 
     # Get article by id
-    result = cur.execute("SELECT * FROM users WHERE id = %s", [id])
+    result = cur.execute("SELECT * FROM PatientList WHERE id = %s", [id])
 
     article = cur.fetchone()
     cur.close()
     # Get form
-    form = usersForm(request.form)
+    form = PatientForm(request.form)
 
     # Populate article form fields
     form.PatientName.data = article['PatientName']
@@ -351,9 +351,9 @@ def edit_patient(id):
 
         # Create Cursor
         cur = mysql.connection.cursor()
-        app.logger.info(email)
+        app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE users SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
+        cur.execute ("UPDATE PatientList SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
@@ -364,7 +364,7 @@ def edit_patient(id):
 
         return redirect(url_for('dashboard'))
 
-    return render_template('edit_user.html', form=form)
+    return render_template('edit_patient.html', form=form)
 
 # Delete Article
 @app.route('/delete_user/<string:id>', methods=['POST'])
