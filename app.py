@@ -10,9 +10,9 @@ app = Flask(__name__)
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '12345hitmaN@#'
-app.config['MYSQL_DB'] = 'database_name'
+app.config['MYSQL_USER'] = 'testuser'
+app.config['MYSQL_PASSWORD'] = 'testpassword'
+app.config['MYSQL_DB'] = 'testflask'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
@@ -24,8 +24,6 @@ json = FlaskJSON(app)
 @app.route('/')
 def index():
     return render_template('home.html')
-
-
 
 # About
 @app.route('/about')
@@ -233,7 +231,10 @@ class PatientForm(Form):
     PatientName = StringField('patient name', [validators.Length(min=1, max=200)])
     Address = TextAreaField('addres', [validators.Length(min=10)])
 
-
+# Article Form Class
+class usersForm(Form):
+    name = StringField(' name', [validators.Length(min=1, max=200)])
+    email = TextAreaField('email', [validators.Length(min=10)])
 
 # Add Article
 @app.route('/add_article', methods=['GET', 'POST'])
@@ -290,34 +291,34 @@ def add_patient():
     return render_template('add_patient.html', form=form)
 
 # Edit Articledelete_article
-@app.route('/edit_article/<string:id>', methods=['GET', 'POST'])
+@app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
-def edit_article(id):
+def edit_user(id):
     # Create cursor
     cur = mysql.connection.cursor()
 
     # Get article by id
-    result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
+    result = cur.execute("SELECT * FROM users WHERE id = %s", [id])
 
     article = cur.fetchone()
     cur.close()
     # Get form
-    form = ArticleForm(request.form)
+    form = usersForm(request.form)
 
     # Populate article form fields
-    form.title.data = article['title']
-    form.body.data = article['body']
+    form.name.data = article['name']
+    form.email.data = article['email']
 
     if request.method == 'POST' and form.validate():
-        title = request.form['title']
-        body = request.form['body']
+        name = request.form['name']
+        email = request.form['email']
 
         # Create Cursor
         cur = mysql.connection.cursor()
-        app.logger.info(title)
+        app.logger.info(email)
         # Execute
-        cur.execute ("UPDATE articles SET title=%s, body=%s WHERE id=%s",(title, body, id))
-        # Commit to DB
+        cur.execute ("UPDATE users SET name=%s, email=%s WHERE id=%s",(name, email, id))
+        # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
         #Close connection
@@ -325,19 +326,19 @@ def edit_article(id):
 
         flash('Article Updated', 'success')
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('user'))
 
-    return render_template('edit_article.html', form=form)
+    return render_template('edit_user.html', form=form)
 
 # Delete Article
-@app.route('/delete_article/<string:id>', methods=['POST'])
+@app.route('/delete_user/<string:id>', methods=['POST'])
 @is_logged_in
-def delete_article(id):
+def delete_user(id):
     # Create cursor
     cur = mysql.connection.cursor()
 
     # Execute
-    cur.execute("DELETE FROM articles WHERE id = %s", [id])
+    cur.execute("DELETE FROM users WHERE id = %s", [id])
 
     # Commit to DB
     mysql.connection.commit()
@@ -345,9 +346,9 @@ def delete_article(id):
     #Close connection
     cur.close()
 
-    flash('Article Deleted', 'success')
+    flash('user Deleted', 'success')
 
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('users'))
 
 if __name__ == '__main__':
     app.secret_key='secret123'
