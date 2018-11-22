@@ -19,6 +19,7 @@ mysql = MySQL(app)
 app.config['JSON_ADD_STATUS'] = False
 app.config['JSON_DATETIME_FORMAT'] = '%d/%m/%Y %H:%M:%S'
 Articles = Articles()
+
 json = FlaskJSON(app)
 # Index
 @app.route('/')
@@ -29,39 +30,6 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-# Articles
-@app.route('/articles')
-def articles():
-    # Create cursor
-    cur = mysql.connection.cursor()
-
-    # Get articles
-    result = cur.execute("SELECT * FROM articles")
-
-    articles = cur.fetchall()
-
-    if result > 0:
-        return render_template('articles.html', articles=articles)
-    else:
-        msg = 'No Articles Found'
-        return render_template('articles.html', msg=msg)
-    # Close connection
-    cur.close()
-
-
-#Single Article
-@app.route('/article/<string:id>/')
-def article(id):
-    # Create cursor
-    cur = mysql.connection.cursor()
-
-    # Get article
-    result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
-
-    article = cur.fetchone()
-
-    return render_template('article.html', article=article)
 
 
 # Register Form Class
@@ -222,18 +190,18 @@ def dashboard():
 @is_logged_in
 def user():
     return  render_template('user.html')
-# Article Form Class
+# patient Form Class
 class PatientForm(Form):
     PatientName = StringField('PatientName', [validators.Length(min=1, max=200)])
-    Address = TextAreaField('Address', [validators.Length(min=10)])
+    Address = TextAreaField('Address', [validators.Length(min=1)])
     ServID  = TextAreaField('ServID')
 
-# Article Form Class
+# users Form Class
 class usersForm(Form):
     name = StringField(' name', [validators.Length(min=1, max=200)])
-    email = TextAreaField('email', [validators.Length(min=10)])
+    email = TextAreaField('email', [validators.Length(min=1)])
 
-# Add Article
+# Add user
 @app.route('/add_user', methods=['GET', 'POST'])
 @is_logged_in
 def add_user():
@@ -287,7 +255,7 @@ def add_patient():
 
     return render_template('add_patient.html', form=form)
 
-# Edit Articledelete_article
+# Edit user
 @app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def edit_user(id):
@@ -323,10 +291,10 @@ def edit_user(id):
 
         flash('Article Updated', 'success')
 
-        return redirect(url_for('user'))
+        return redirect(url_for('users'))
 
     return render_template('edit_user.html', form=form)
-# Edit Articledelete_article
+# Edit delete patient
 @app.route('/edit_patient/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def edit_patient(id):
@@ -366,7 +334,7 @@ def edit_patient(id):
 
     return render_template('edit_patient.html', form=form)
 
-# Delete Article
+# Delete user
 @app.route('/delete_user/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_user(id):

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8a502d9-76b7-4e02-8475-d73d6dd55d12" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_patient.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +76,7 @@
     <session id="1610025168">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.15" value="1" />
@@ -89,33 +89,33 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="5" />
-          <entry key="html" value="77" />
+          <entry key="html" value="78" />
           <entry key="js" value="6" />
-          <entry key="py" value="5" />
+          <entry key="py" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="5" />
-          <entry key="HTML" value="77" />
+          <entry key="HTML" value="78" />
           <entry key="JavaScript" value="6" />
-          <entry key="Python" value="5" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1139" />
+          <entry key="html" value="1159" />
           <entry key="js" value="138" />
-          <entry key="py" value="678" />
+          <entry key="py" value="739" />
           <entry key="txt" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1139" />
+          <entry key="HTML" value="1159" />
           <entry key="JavaScript" value="138" />
           <entry key="PLAIN_TEXT" value="50" />
-          <entry key="Python" value="678" />
+          <entry key="Python" value="739" />
         </counts>
       </usages-collector>
     </session>
@@ -124,56 +124,7 @@
     <favorites_list name="myflaskapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="355" column="40" selection-start-line="355" selection-start-column="40" selection-end-line="355" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#107#0" expanded="true" />
-                <element signature="e#1842#2253#0" />
-                <element signature="e#2340#3150#0" />
-                <element signature="e#3227#4354#0" />
-                <element signature="e#4407#4654#0" />
-                <element signature="e#7022#7593#0" />
-                <element signature="e#7683#8385#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/users.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="23" column="40" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="40" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/edit_patient.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -205,6 +156,7 @@
       <find>delete_article</find>
       <find>edit</find>
       <find>article</find>
+      <find>Articles</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,12 +193,12 @@
         <option value="$PROJECT_DIR$/templates/_layoutUser.html" />
         <option value="$PROJECT_DIR$/templates/_layoutHome.html" />
         <option value="$PROJECT_DIR$/templates/edit_patient.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/dashboard.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="135" />
     <option name="y" value="262" />
     <option name="width" value="1151" />
@@ -488,9 +440,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.20789686" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.20789686" />
       <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info id="Favorites" order="2" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -501,7 +452,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32935154" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49798548" visible="true" weight="0.21672355" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49798548" visible="true" weight="0.21672355" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5020145" side_tool="true" visible="true" weight="0.21672355" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4995971" weight="0.33105803" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -793,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/edit_patient.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -819,16 +763,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="355" column="40" selection-start-line="355" selection-start-column="40" selection-end-line="355" selection-end-column="40" />
+        <state relative-caret-position="134">
+          <caret line="179" column="12" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
           <folding>
             <element signature="e#0#107#0" expanded="true" />
             <element signature="e#1842#2253#0" />
             <element signature="e#2340#3150#0" />
             <element signature="e#3227#4354#0" />
             <element signature="e#4407#4654#0" />
+            <element signature="e#4727#5174#0" />
+            <element signature="e#5227#5699#0" />
+            <element signature="e#5763#5863#0" />
+            <element signature="e#6475#6511#0" />
+            <element signature="e#6562#6745#0" />
+            <element signature="e#6795#6923#0" />
             <element signature="e#7022#7593#0" />
             <element signature="e#7683#8385#0" />
+            <element signature="e#9630#10692#0" />
+            <element signature="e#10807#11095#0" />
+            <element signature="e#11198#11500#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding>
+            <element signature="n#table#0;n#!!top" />
           </folding>
         </state>
       </provider>
