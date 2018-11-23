@@ -15,7 +15,7 @@ Bootstrap(app)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'testuser'
 app.config['MYSQL_PASSWORD'] = '2468@HitMan'
-app.config['MYSQL_DB'] = 'testflask'
+app.config['MYSQL_DB'] = 'erp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
@@ -209,6 +209,26 @@ def dashboardd():
         return render_template('dashboardd.html', msg=msg)
     # Close connection
     cur.close()
+@app.route('/patient')
+@is_logged_in
+def patient():
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get articles
+    #result = cur.execute("SELECT * FROM articles")
+    # Show articles only from the user logged in
+    result = cur.execute("SELECT * FROM PatientList ")
+
+    patients = cur.fetchall()
+
+    if result > 0:
+        return render_template('dashboardd.html', patients=patients)
+    else:
+        msg = 'No Articles Found'
+        return render_template('dashboardd.html', msg=msg)
+    # Close connection
+    cur.close()
 @app.route('/user')
 @is_logged_in
 def user():
@@ -330,9 +350,9 @@ def add_servList():
 
         flash('Service  Created', 'success')
 
-        return redirect(url_for('dashboardd'))
+        return redirect(url_for('serv'))
 
-    return render_template('add_serv.html', form=form)
+    return render_template('add_servList.html', form=form)
 
 # Edit user
 @app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
