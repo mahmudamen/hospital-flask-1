@@ -1,0 +1,39 @@
+{% extends '_layoutUser.html' %}
+{% block body %}
+<body>
+  <a class="btn btn-success" href="/register"> اضافة مستخدم جديد</a>
+  <hr>
+                <div class="panel-heading" style="height: 50%;">
+                    <label class="panel-title" style="font-size:13pt;">  قائمة الموظفين </label>
+                </div>
+                <div class="panel-body" id="panelwaitlist" style="max-height:100%;   min-height:100%; padding:5px">
+
+  <table id="patlist" class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for article in articles %}
+      <tr>
+        <td>{{article.id}}</td>
+        <td>{{article.name}}</td>
+           <td>{{article.email}}</td>
+        <td><a href="edit_user/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_user', id=article.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+                </div>
+        <!-- end col-4 -->
+</body>
+{% endblock %}
+</html>
