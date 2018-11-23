@@ -1,6 +1,20 @@
-{% extends '_layoutUser.html' %}
+
+{% extends '_layoutHome.html' %}
+
 
 {% block body %}
+
+</body>
+<div id="mdshift">
+    <div class="modal-med">
+        <div class="modal-content">
+              <form method="POST" action="">
+            <div class="modal-header">
+                <label class="modal-title">اضافة مريض </label>
+            </div>
+                  <form action="" method="POST">
+            <div class="modal-body">
+                <div class="row">
   <h1>مستخدم جديد</h1>
   {% from "includes/_formhelpers.html" import render_field %}
   <form method="POST" action="">
@@ -21,13 +35,11 @@
     </div>
     <p><input type="submit" class="btn btn-primary" value="Submit"></p>
   </form>
-<script>
-  $(document).ready(function(){
+        </div>
+    </div>
+</div>
+  </form>
 
-
-    $('#names').value('dsfkalsdfjk');
-
-
-});
-</script>
 {% endblock %}
+
+

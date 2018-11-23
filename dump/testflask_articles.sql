@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
 --
--- Host: localhost    Database: database_name
+-- Host: localhost    Database: testflask
 -- ------------------------------------------------------
 -- Server version	5.7.24-0ubuntu0.18.04.1
 
@@ -16,31 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Role`
+-- Dumping data for table `articles`
 --
 
-DROP TABLE IF EXISTS `Role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Role` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RoleName` varchar(45) NOT NULL,
-  `RoleDescription` varchar(300) NOT NULL,
-  `IsActive` bit(1) NOT NULL,
-  `ValidFrom` date NOT NULL,
-  `CreateDate` date NOT NULL,
-  `CreatedTime` time NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Role`
---
-
-LOCK TABLES `Role` WRITE;
-/*!40000 ALTER TABLE `Role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Role` ENABLE KEYS */;
+LOCK TABLES `articles` WRITE;
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+INSERT INTO `articles` VALUES (2,'تجربة 2','<p>تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2تجربة 2</p>','mmmm',NULL,NULL);
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 14:12:05
+-- Dump completed on 2018-11-23 16:13:18

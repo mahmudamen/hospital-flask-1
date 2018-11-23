@@ -1,8 +1,17 @@
-{% extends '_layoutUser.html' %}
+{% extends '_layoutHome.html' %}
+
 
 {% block body %}
-  <h1></h1>
-  {% from "includes/_formhelpers.html" import render_field %}
+
+</body>
+<div id="mdshift">
+    <div class="modal-med">
+        <div class="modal-content">
+              <form method="POST" action="">
+            <div class="modal-header">
+                <label class="modal-title">اضافة مريض </label>
+            </div>
+            {% from "includes/_formhelpers.html" import render_field %}
   <form method="POST" action="">
     <div class="form-group">
       {{ render_field(form.PatientName, class_="form-control") }}
@@ -12,4 +21,12 @@
     </div>
     <p><input class="btn btn-primary" type="submit" value="Submit">
   </form>
+                  </form>
+        </div>
+    </div>
+</div>
+  </form>
+
 {% endblock %}
+
+

@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'testuser'
-app.config['MYSQL_PASSWORD'] = 'testpassword'
+app.config['MYSQL_PASSWORD'] = '2468@HitMan'
 app.config['MYSQL_DB'] = 'testflask'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
@@ -157,6 +157,26 @@ def users():
         return render_template('users.html', msg=msg)
     # Close connection
     cur.close()
+@app.route('/servlist')
+@is_logged_in
+def servlist():
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get articles
+    #result = cur.execute("SELECT * FROM articles")
+    # Show articles only from the user logged in
+    result = cur.execute("SELECT * FROM ServList")
+
+    articles = cur.fetchall()
+
+    if result > 0:
+        return render_template('servlist.html', articles=articles)
+    else:
+        msg = 'No service Found'
+        return render_template('servlist.html', msg=msg)
+    # Close connection
+    cur.close()
 # Logout
 @app.route('/logout')
 @is_logged_in
@@ -195,6 +215,10 @@ class PatientForm(Form):
     PatientName = StringField('PatientName', [validators.Length(min=1, max=200)])
     Address = TextAreaField('Address', [validators.Length(min=1)])
     ServID  = TextAreaField('ServID')
+# serv form class
+class ServForm(Form):
+    ServName = StringField('ServName', [validators.Length(min=1, max=200)])
+    Price = TextAreaField('Price', [validators.Length(min=1)])
 
 # users Form Class
 class usersForm(Form):
@@ -227,7 +251,7 @@ def add_user():
 
         return redirect(url_for('users'))
 
-    return render_template('add_article.html', form=form)
+    return render_template('users.html', form=form)
 # Add patient
 @app.route('/add_patient', methods=['GET', 'POST'])
 def add_patient():
@@ -254,6 +278,32 @@ def add_patient():
         return redirect(url_for('dashboard'))
 
     return render_template('add_patient.html', form=form)
+# add serv
+@app.route('/addserv', methods=['GET', 'POST'])
+def addserv():
+    form = ServForm(request.form)
+    if request.method == 'POST' and form.validate():
+        ServName = form.ServName.data
+        Price = form.Price.data
+
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+
+        # Execute
+        cur.execute("INSERT INTO ServList( ServName, Price) VALUES(%s,%s )",(ServName, Price))
+
+        # Commit to DB
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('Article Created', 'success')
+
+        return redirect(url_for('dashboard'))
+
+    return render_template('addserv.html', form=form)
 
 # Edit user
 @app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
@@ -328,7 +378,7 @@ def edit_patient(id):
         #Close connection
         cur.close()
 
-        flash('Article Updated', 'success')
+        flash('Patient Updated', 'success')
 
         return redirect(url_for('dashboard'))
 

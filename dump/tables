@@ -1,0 +1,58 @@
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `body` varchar(305) DEFAULT NULL,
+  `author` varchar(45) DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `d` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `PatientList` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PatientName` varchar(155) DEFAULT NULL,
+  `Address` varchar(245) DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `CreatedBy` varchar(45) DEFAULT NULL,
+  `CreatedDate` varchar(45) DEFAULT NULL,
+  `ServID` varchar(45) DEFAULT NULL,
+  `UserName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `Role` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RoleName` varchar(45) NOT NULL,
+  `RoleDescription` varchar(300) NOT NULL,
+  `IsActive` bit(1) NOT NULL,
+  `ValidFrom` date NOT NULL,
+  `CreateDate` date NOT NULL,
+  `CreatedTime` time NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `UserRole` (
+  `ID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `RoleID` int(11) NOT NULL,
+  `IsActive` bit(1) NOT NULL,
+  `ValidFrom` date NOT NULL,
+  `CreatedBy` int(11) NOT NULL,
+  `CreatedDate` date NOT NULL,
+  `CreatedTime` time NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(300) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `RoleID` int(11) DEFAULT NULL,
+  `Entrykey` varchar(45) DEFAULT NULL,
+  `Telephone` varchar(45) DEFAULT NULL,
+  `IsActive` bit(1) DEFAULT NULL,
+  `CreatedBy` int(11) DEFAULT NULL,
+  `ValidFrom` date DEFAULT NULL,
+  `CreatedDate` date DEFAULT NULL,
+  `CreatedTime` time DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
