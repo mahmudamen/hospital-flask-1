@@ -1,7 +1,6 @@
-{% extends '_layoutUser.html' %}
+{% extends '_layoutserv.html' %}
 
 {% block body %}
-{% from "includes/_formhelpers.html" import render_field %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,20 +10,20 @@
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
                             </div>
-                            <h4 class="panel-title">تعديل بيانات مريض </h4>
+                            <h4 class="panel-title">اضافة مريض جديد</h4>
                         </div>
                         <div class="panel-body">
                             <form class="form-horizontal" method="POST" action="">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> اسم الخدمة</label>
                                     <div class="col-md-9">
-      {{ render_field(form.name, class_="form-control") }}
+                                        <input name="ServName" type="text" class="form-control" placeholder="اسم الخدمة ">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">السعر</label>
                                     <div class="col-md-9">
-      {{ render_field(form.email, class_="form-control") }}
+                                        <input type="text" name="Price"  class="form-control" placeholder=" السعر" >
                                     </div>
                                 </div>
                                 <div class="form-group">

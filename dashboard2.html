@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>  <small> مرحبا {{session.username}}</small></h1>
+  <a class="btn btn-success" href="/addpat"> اضافة مريض</a>
+  <hr>
+<div class="panel panel-inverse" data-sortable-id="table-basic-7">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Responsive Table</h4>
+                        </div>
+                        <div class="panel-body">
+							<div class="table-responsive">
+                                    <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      <th>address</th>
+      <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for patient in patients %}
+      <tr>
+        <td>{{patient.ID}}</td>
+        <td>{{patient.PatientName}}</td>
+        <td>{{patient.Address}}</td>
+        <td>{{patient.CreateDate}}</td>
+        <td><a href="edit_patient/{{patient.ID}}" class="btn btn-default pull-right">edit</a></td>
+        <td>
+          <form action="{{url_for('delete_patient', id=patient.ID)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="d" class="btn btn-danger">
+                                            </form>
+                                          </td>
+                                      </tr>
+    {% endfor %}
+                                </table>
+							</div>
+						</div>
+					</div>
+{% endblock %}

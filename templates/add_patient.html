@@ -4,37 +4,70 @@
 {% block body %}
 
 </body>
-<div id="mdshift">
-    <div class="modal-med">
-        <div class="modal-content">
-              <form method="POST" action="">
-            <div class="modal-header">
-                <label class="modal-title">اضافة مريض </label>
-            </div>
-                  <form action="" method="POST">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group">
-                        <label>اسم المريض</label>
-                        <input type="text" name="PatientName" class="form-control" value={{request.form.PatientName}}>
+<div class="col-md-6 ui-sortable">
+			        <!-- begin panel -->
+                    <div class="panel panel-inverse" data-sortable-id="form-validation-1">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+
+                            </div>
+                            <h4 class="panel-title">Basic Form Validation</h4>
+                        </div>
+                        <div class="panel-body panel-form">
+                            <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="fullname">Full Name * :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="text" id="fullname" name="fullname" placeholder="Required" data-parsley-required="true" data-parsley-id="8184"><ul class="parsley-errors-list" id="parsley-id-8184"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="email">Email * :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="text" id="email" name="email" data-parsley-type="email" placeholder="Email" data-parsley-required="true" data-parsley-id="6402"><ul class="parsley-errors-list" id="parsley-id-6402"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="website">Website :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="url" id="website" name="website" data-parsley-type="url" placeholder="url" data-parsley-id="6350"><ul class="parsley-errors-list" id="parsley-id-6350"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="message">Message (20 chars min, 200 max) :</label>
+									<div class="col-md-6 col-sm-6">
+										<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="Range from 20 - 200" data-parsley-id="4827"></textarea><ul class="parsley-errors-list" id="parsley-id-4827"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="message">Digits :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="text" id="digits" name="digits" data-parsley-type="digits" placeholder="Digits" data-parsley-id="9189"><ul class="parsley-errors-list" id="parsley-id-9189"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="message">Number :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="text" id="number" name="number" data-parsley-type="number" placeholder="Number" data-parsley-id="2279"><ul class="parsley-errors-list" id="parsley-id-2279"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4" for="message">Phone :</label>
+									<div class="col-md-6 col-sm-6">
+										<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="(XXX) XXXX XXX" data-parsley-id="3520"><ul class="parsley-errors-list" id="parsley-id-3520"></ul>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-4 col-sm-4"></label>
+									<div class="col-md-6 col-sm-6">
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+								</div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>العنوان </label>
-                        <input type="text" name="Address" class="form-control" value={{request.form.Address}}>
-                    </div>
-                    <div class="form-group">
-                        <label>الخدمة </label>
-                        <input type="text" name="ServID" class="form-control" value={{request.form.ServID}}>
-                    </div>
+                    <!-- end panel -->
                 </div>
-            </div>
-            <div class="modal-footer">
-                <p><input class="btn btn-primary" type="submit" value="Submit">
-            </div>
-                  </form>
-        </div>
-    </div>
-</div>
   </form>
 
 {% endblock %}

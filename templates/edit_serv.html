@@ -1,4 +1,4 @@
-{% extends '_layoutUser.html' %}
+{% extends '_layoutserv.html' %}
 
 {% block body %}
 {% from "includes/_formhelpers.html" import render_field %}
@@ -18,19 +18,19 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> اسم الخدمة</label>
                                     <div class="col-md-9">
-      {{ render_field(form.name, class_="form-control") }}
+      {{ render_field(form.ServName, class_="form-control") }}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">السعر</label>
                                     <div class="col-md-9">
-      {{ render_field(form.email, class_="form-control") }}
+      {{ render_field(form.Price, class_="form-control") }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Submit</label>
+                                    <label class="col-md-3 control-label">حفظ</label>
                                     <div class="col-md-9">
-                                        <button type="submit" class="btn btn-sm btn-success">Submit Button</button>
+                                        <button type="submit" class="btn btn-sm btn-success">احفظ </button>
                                     </div>
                                 </div>
                             </form>

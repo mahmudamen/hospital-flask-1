@@ -8,6 +8,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 app = Flask(__name__)
 Bootstrap(app)
+
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
@@ -98,7 +99,7 @@ def login():
                 session['username'] = username
 
                 flash('You are now logged in', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('dashboardd'))
             else:
                 error = 'Invalid login'
                 return render_template('login.html', error=error)
@@ -159,9 +160,9 @@ def users():
         return render_template('users.html', msg=msg)
     # Close connection
     cur.close()
-@app.route('/servlist')
+@app.route('/serv')
 @is_logged_in
-def servlist():
+def serv():
     # Create cursor
     cur = mysql.connection.cursor()
 
@@ -173,10 +174,10 @@ def servlist():
     articles = cur.fetchall()
 
     if result > 0:
-        return render_template('servlist.html', articles=articles)
+        return render_template('serv.html', articles=articles)
     else:
         msg = 'No service Found'
-        return render_template('servlist.html', msg=msg)
+        return render_template('serv.html', msg=msg)
     # Close connection
     cur.close()
 # Logout
@@ -187,10 +188,10 @@ def logout():
     flash('You are now logged out', 'success')
     return redirect(url_for('login'))
 
-# Dashboard
-@app.route('/dashboard')
+# Dashboard2
+@app.route('/dashboardd')
 @is_logged_in
-def dashboard():
+def dashboardd():
     # Create cursor
     cur = mysql.connection.cursor()
 
@@ -202,10 +203,10 @@ def dashboard():
     patients = cur.fetchall()
 
     if result > 0:
-        return render_template('dashboard.html', patients=patients)
+        return render_template('dashboardd.html', patients=patients)
     else:
         msg = 'No Articles Found'
-        return render_template('dashboard.html', msg=msg)
+        return render_template('dashboardd.html', msg=msg)
     # Close connection
     cur.close()
 @app.route('/user')
@@ -215,17 +216,17 @@ def user():
 # patient Form Class
 class PatientForm(Form):
     PatientName = StringField('PatientName', [validators.Length(min=1, max=200)])
-    Address = TextAreaField('Address', [validators.Length(min=1)])
-    ServID  = TextAreaField('ServID')
+    Address = StringField('Address', [validators.Length(min=1)])
+    ServID  = StringField('ServID')
 # serv form class
 class ServForm(Form):
-    ServName = StringField('ServName', [validators.Length(min=1, max=200)])
-    Price = TextAreaField('Price', [validators.Length(min=1)])
+    ServName = StringField('', [validators.Length(min=8, )])
+    Price = StringField('' )
 
 # users Form Class
 class usersForm(Form):
     name = StringField(' name', [validators.Length(min=1, max=200)])
-    email = TextAreaField('email', [validators.Length(min=1)])
+    email = StringField('email', [validators.Length(min=1)])
 
 # Add user
 @app.route('/add_user', methods=['GET', 'POST'])
@@ -277,12 +278,38 @@ def add_patient():
 
         flash('Article Created', 'success')
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('dashboardd'))
 
     return render_template('add_patient.html', form=form)
+# Add patient with bootstrap
+@app.route('/addpat', methods=['GET', 'POST'])
+def addpat():
+    form = PatientForm(request.form)
+    if request.method == 'POST' and form.validate():
+        PatientName = form.PatientName.data
+        Address = form.Address.data
+        ServID = form.ServID.data
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+
+        # Execute
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
+
+        # Commit to DB
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('Article Created', 'success')
+
+        return redirect(url_for('dashboardd'))
+
+    return render_template('addpat.html', form=form)
 # add serv
-@app.route('/addserv', methods=['GET', 'POST'])
-def addserv():
+@app.route('/add_servList', methods=['GET', 'POST'])
+def add_servList():
     form = ServForm(request.form)
     if request.method == 'POST' and form.validate():
         ServName = form.ServName.data
@@ -301,11 +328,11 @@ def addserv():
         #Close connection
         cur.close()
 
-        flash('Article Created', 'success')
+        flash('Service  Created', 'success')
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('dashboardd'))
 
-    return render_template('addserv.html', form=form)
+    return render_template('add_serv.html', form=form)
 
 # Edit user
 @app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
@@ -346,6 +373,7 @@ def edit_user(id):
         return redirect(url_for('users'))
 
     return render_template('edit_user.html', form=form)
+
 # Edit delete patient
 @app.route('/edit_patient/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
@@ -382,9 +410,48 @@ def edit_patient(id):
 
         flash('Patient Updated', 'success')
 
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('dashboardd'))
 
     return render_template('edit_patient.html', form=form)
+# Edit delete serv
+@app.route('/edit_serv/<string:id>', methods=['GET', 'POST'])
+@is_logged_in
+def edit_serv(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get article by id
+    result = cur.execute("SELECT * FROM ServList WHERE id = %s", [id])
+
+    article = cur.fetchone()
+    cur.close()
+    # Get form
+    form = ServForm(request.form)
+
+    # Populate article form fields
+    form.ServName.data = article['ServName']
+    form.Price.data = article['Price']
+
+    if request.method == 'POST' and form.validate():
+        ServName = request.form['ServName']
+        Price = request.form['Price']
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+        app.logger.info(ServName)
+        # Execute
+        cur.execute ("UPDATE ServList SET ServName=%s, Price=%s WHERE id=%s",(ServName, Price, id))
+        # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('service Updated', 'success')
+
+        return redirect(url_for('serv'))
+
+    return render_template('edit_serv.html', form=form)
 
 # Delete user
 @app.route('/delete_user/<string:id>', methods=['POST'])
@@ -422,7 +489,7 @@ def delete_patient(id):
 
     flash('Patient Deleted', 'success')
 
-    return redirect(url_for('dashboard'))
+    return redirect(url_for('dashboardd'))
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(debug=True)

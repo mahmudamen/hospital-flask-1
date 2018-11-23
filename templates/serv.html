@@ -1,0 +1,48 @@
+{% extends '_layoutserv.html' %}
+{% block body %}
+                        <div class="alert alert-info fade in">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h1>  <small> مرحبا {{session.username}}</small></h1>
+                        </div>
+  <a class="btn btn-success" href="/addpat"> اضافة مريض</a>
+  <hr>
+<div class="panel panel-inverse" style="">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+
+                            </div>
+                            <h4 class="panel-title">قائمة الخدمات</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="table-responsive">
+ <table id="patlist" class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>ServName</th>
+      <th>Price</th>
+      <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for article in articles %}
+      <tr>
+        <td>{{article.ID}}</td>
+        <td>{{article.ServName}}</td>
+           <td>{{article.Price}}</td>
+        <td><a href="edit_serv/{{article.ID}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_user', id=article.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

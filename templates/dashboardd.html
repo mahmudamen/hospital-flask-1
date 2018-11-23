@@ -1,11 +1,24 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <h1>  <small> مرحبا {{session.username}}</small></h1>
+                        <div class="alert alert-info fade in">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h1>  <small> مرحبا {{session.username}}</small></h1>
+                        </div>
   <a class="btn btn-success" href="/addpat"> اضافة مريض</a>
   <hr>
-<div>
-    <table class="table table-striped">
+<div class="panel panel-inverse" data-sortable-id="table-basic-7">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+
+                            </div>
+                            <h4 class="panel-title"> قائمة المرضي</h4>
+                        </div>
+                        <div class="panel-body">
+							<div class="table-responsive">
+						<table class="table table-striped">
     <tr>
       <th>ID</th>
       <th>name</th>
@@ -30,8 +43,10 @@
       </tr>
     {% endfor %}
   </table>
-</div>
+							</div>
 
+						</div>
+					</div>
 
 
 {% endblock %}

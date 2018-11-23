@@ -1,39 +1,41 @@
-{% extends '_layoutHome.html' %}
+{% extends '_layoutLogin.html' %}
 
 
 {% block body %}
 
-</body>
-<div id="mdshift">
-    <div class="modal-med">
-        <div class="modal-content">
-              <form method="POST" action="">
-            <div class="modal-header">
-                <label class="modal-title">اضافة مريض </label>
-            </div>
-                  <form action="" method="POST">
-            <div class="modal-body">
-                <div class="row">
+<hr>
+<br>
+<div class="row">
+    <div class="col-md-12 ui-sortable">
+<div class="panel panel-inverse" data-sortable-id="form-stuff-3">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
 
-                    <div class="form-group">
+                            </div>
+                            <h4 class="panel-title" center>hospital app</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form  method="POST" action="">
+                                <fieldset>
+                                    <legend>تسجيل الدخول</legend>
+                                    <div class="form-group">
                         <label>اسم المستخدم</label>
-                        <input type="text" name="username" class="form-control" value={{request.form.username}}>
-                    </div>
+                        <input type="text" name="username" style="width:50%" class="form-control" value={{request.form.username}}>
+                                    </div>
+                                    <div class="form-group">
                     <div class="form-group">
                         <label>كلمة المرور</label>
-                        <input type="password" name="password" class="form-control" value={{request.form.password}}>
+                        <input type="password" name="password" style="width:50%"  class="form-control" value={{request.form.password}}>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p><input class="btn btn-primary" type="submit" value="Submit">
-            </div>
-                  </form>
-        </div>
-    </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-primary m-r-5">تسجيل الدخول</button>
+                                    <button type="submit" class="btn btn-sm btn-default">Cancel</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
 </div>
-  </form>
-
+</div>
 {% endblock %}
 
 
