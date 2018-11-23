@@ -1,11 +1,13 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
 from data import Articles
+from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
 app = Flask(__name__)
+Bootstrap(app)
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL

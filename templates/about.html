@@ -1,6 +1,22 @@
-{% extends 'layout.html' %}
+{% extends "bootstrap/base.html" %}
 
-{% block body %}
-  <h1>About Us</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{% block content %}
+<h1>Hello</h1>
+<div class="alert alert-success" role="alert">
+  <a href="#" class="alert-link">One</a>
+</div>
+<div class="alert alert-info" role="alert">
+  <a href="#" class="alert-link">Two</a>
+</div>
+<div class="alert alert-warning" role="alert">
+  <a href="#" class="alert-link">Three</a>
+</div>
+<div class="alert alert-danger" role="alert">
+  <a href="#" class="alert-link">Four</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 {% endblock %}
