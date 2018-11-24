@@ -1,12 +1,13 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
 from data import Articles
-from wtforms import form, TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
+from wtforms import form, TextField, DecimalField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+import decimal
 app = Flask(__name__)
 Bootstrap(app)
 app.config['SECRET_KEY'] = "dontell"
@@ -239,8 +240,8 @@ class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
     ServID = SelectField(' ', choices=[('CA', 'California'), ('NV', 'Nevada')])
-    Price = StringField(' ')
-    
+    Price = DecimalField('Price')
+
 # serv form class
 class ServForm(Form):
     ServName = StringField('', [validators.Length(min=8, )])
@@ -320,14 +321,14 @@ def addpat():
         PatientName = form.PatientName.data
         Address = form.Address.data
         ServID = form.ServID.data
-
+        Price = form.Price.data
         # Create Cursor
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM articles")
         articles = cur.fetchall()
         
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s, %s, %s, %s)",(PatientName, Address ,ServID , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName,Price) VALUES(%s, %s, %s, %s,%s)",(PatientName, Address ,ServID , session['username'],Price))
 
         # Commit to DB
         mysql.connection.commit()
@@ -458,14 +459,14 @@ def edit_patient(id):
     if request.method == 'POST' and form.validate():
         PatientName = request.form['PatientName']
         Address = request.form['Address']
-        form.ServID.data = article['ServID']
-        form.Price.data = article['Price']
+        ServID = request.form['ServID']
+        Price = request.form['Price']
 
         # Create Cursor
         cur = mysql.connection.cursor()
         app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE PatientList SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
+        cur.execute ("UPDATE PatientList SET PatientName=%s,ServID=%s,Price=%s ,Address=%s WHERE id=%s",(PatientName,ServID,Price, Address, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
