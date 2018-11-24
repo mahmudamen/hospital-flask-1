@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
 from data import Articles
+from wtforms import  TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from flask_mysqldb import MySQL
@@ -8,7 +9,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 app = Flask(__name__)
 Bootstrap(app)
-
+app.config['SECRET_KEY'] = "dontell"
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
@@ -235,9 +236,10 @@ def user():
     return  render_template('user.html')
 # patient Form Class
 class PatientForm(Form):
-    PatientName = StringField('PatientName', [validators.Length(min=1, max=200)])
-    Address = StringField('Address', [validators.Length(min=1)])
-    ServID  = StringField('ServID')
+    PatientName = StringField(' ', [validators.Length(min=1, max=200)])
+    Address = StringField(' ', [validators.Length(min=1)])
+    ServID = SelectField(' ', choices=[('CA', 'California'), ('NV', 'Nevada')])
+    Price = StringField(' ', [validators.Length(min=1)])
 # serv form class
 class ServForm(Form):
     ServName = StringField('', [validators.Length(min=8, )])
@@ -303,9 +305,11 @@ def add_patient():
 
     return render_template('add_patient.html', form=form)
 # Add patient with bootstrap
+
 @app.route('/addpat', methods=['GET', 'POST'])
 @is_logged_in
 def addpat():
+
     form = PatientForm(request.form)
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
@@ -318,7 +322,7 @@ def addpat():
         articles = cur.fetchall()
         
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s, %s, %s, %s)",(PatientName, Address ,ServID , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -419,7 +423,7 @@ def edit_user(id):
         #Close connection
         cur.close()
 
-        flash('Article Updated', 'success')
+        flash('User Updated', 'success')
 
         return redirect(url_for('users'))
 
@@ -443,16 +447,19 @@ def edit_patient(id):
     # Populate article form fields
     form.PatientName.data = article['PatientName']
     form.Address.data = article['Address']
-
+    form.ServID.data = article['ServID']
+    form.Price.data = article['Price']
     if request.method == 'POST' and form.validate():
         PatientName = request.form['PatientName']
         Address = request.form['Address']
+        ServID = request.form['ServID']
+        Price = request.form['Price']
 
         # Create Cursor
         cur = mysql.connection.cursor()
         app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE PatientList SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
+        cur.execute ("UPDATE PatientList SET PatientName=%s,ServID=%s, Pricee=%s, Address=%s WHERE id=%s",(PatientName, Address,Price,ServID, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
@@ -541,6 +548,24 @@ def delete_patient(id):
     flash('Patient Deleted', 'success')
 
     return redirect(url_for('dashboardd'))
+@app.route('/autocomplete', methods=['GET'])
+def autocomplete():
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get articles
+    # result = cur.execute("SELECT * FROM articles")
+    # Show articles only from the user logged in
+    result = cur.execute("SELECT * FROM users  ")
+    articles = cur.fetchall()
+    if result > 0:
+        return jsonify(data=articles)
+
+    else:
+        msg = 'No users  Found'
+        return render_template('users.html', msg=msg)
+    # Close connection
+    cur.close()
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(debug=True)

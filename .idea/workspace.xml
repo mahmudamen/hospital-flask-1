@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8a502d9-76b7-4e02-8475-d73d6dd55d12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/_layoutpatient.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/addpatientde.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutHome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutpatient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutpatient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_layoutserv.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_layoutserv.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/addpat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addpat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboardd.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboardd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_serv.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_serv.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="247" column="25" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
+            <state relative-caret-position="237">
+              <caret line="566" column="22" lean-forward="true" selection-start-line="566" selection-start-column="22" selection-end-line="566" selection-end-column="22" />
               <folding>
                 <element signature="e#0#107#0" expanded="true" />
               </folding>
@@ -36,20 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/users.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/addpat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="9" selection-end-column="39" />
+            <state relative-caret-position="135">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -61,10 +54,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/_layoutpatient.html">
+        <entry file="file://$PROJECT_DIR$/templates/edit_patient.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+            <state relative-caret-position="30">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="31" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -81,10 +74,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sha256_crypt</find>
       <find>/</find>
       <find>button</find>
-      <find>tab</find>
       <find>delete</find>
       <find>maxcdn</find>
       <find>caonnection</find>
@@ -106,9 +97,13 @@
       <find>serv</find>
       <find>edit_serv</find>
       <find>dashboardd</find>
-      <find>addpat</find>
       <find>Form</find>
       <find>usersForm</find>
+      <find>tab</find>
+      <find>form</find>
+      <find>SelectField</find>
+      <find>PatientForm</find>
+      <find>addpat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,7 +129,6 @@
         <option value="$PROJECT_DIR$/templates/user.html" />
         <option value="$PROJECT_DIR$/static/h.js" />
         <option value="$PROJECT_DIR$/templates/_layoutHome.html" />
-        <option value="$PROJECT_DIR$/templates/edit_patient.html" />
         <option value="$PROJECT_DIR$/templates/register.html" />
         <option value="$PROJECT_DIR$/templates/add_article.html" />
         <option value="$PROJECT_DIR$/templates/dashboard.html" />
@@ -145,7 +139,6 @@
         <option value="$PROJECT_DIR$/templates/_layoutserv.html" />
         <option value="$PROJECT_DIR$/templates/includes/_navbar.html" />
         <option value="$PROJECT_DIR$/templates/add_servList.html" />
-        <option value="$PROJECT_DIR$/templates/edit_serv.html" />
         <option value="$PROJECT_DIR$/templates/_layoutLogin.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/serv.html" />
@@ -153,12 +146,14 @@
         <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/templates/addpatientde.html" />
         <option value="$PROJECT_DIR$/templates/dashboardd.html" />
+        <option value="$PROJECT_DIR$/templates/users.html" />
         <option value="$PROJECT_DIR$/templates/_layoutUser.html" />
         <option value="$PROJECT_DIR$/templates/_layoutpatient.html" />
         <option value="$PROJECT_DIR$/templates/addpat.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/edit_user.html" />
-        <option value="$PROJECT_DIR$/templates/users.html" />
+        <option value="$PROJECT_DIR$/templates/edit_serv.html" />
+        <option value="$PROJECT_DIR$/templates/edit_patient.html" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -176,22 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="myflaskapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="myflaskapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,6 +182,22 @@
               <item name="myflaskapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="myflaskapp" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="myflaskapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="myflaskapp" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -417,19 +412,19 @@
     <frame x="67" y="27" width="1299" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.19313647" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.20271349" />
       <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info id="Favorites" order="2" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4987913" weight="0.39863715" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4980048" visible="true" weight="0.39728352" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.16440542" weight="0.5171289" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.04931973" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32935154" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4924182" visible="true" weight="0.2156197" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50758183" side_tool="true" visible="true" weight="0.2156197" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49162012" weight="0.2156197" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5019952" side_tool="true" visible="true" weight="0.15449916" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4995971" weight="0.33105803" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -617,9 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_patient.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -681,13 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_serv.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="32" column="97" selection-start-line="32" selection-start-column="97" selection-end-line="32" selection-end-column="97" />
         </state>
       </provider>
     </entry>
@@ -776,24 +761,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboardd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-324">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/_layoutUser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="24" column="90" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="90" />
+        <state relative-caret-position="80">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/edit_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/_layoutpatient.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        <state relative-caret-position="15">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/edit_serv.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/addpat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="9" selection-end-column="39" />
+        <state relative-caret-position="135">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
@@ -803,34 +816,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboardd.html">
+    <entry file="file://$PROJECT_DIR$/templates/edit_patient.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-324">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/edit_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="31" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="247" column="25" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
+        <state relative-caret-position="237">
+          <caret line="566" column="22" lean-forward="true" selection-start-line="566" selection-start-column="22" selection-end-line="566" selection-end-column="22" />
           <folding>
             <element signature="e#0#107#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
