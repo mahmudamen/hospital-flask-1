@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
 from data import Articles
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms import  TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
@@ -239,6 +240,7 @@ class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
     ServID = SelectField(' ', choices=[('CA', 'California'), ('NV', 'Nevada')])
+
     Price = StringField(' ', [validators.Length(min=1)])
 # serv form class
 class ServForm(Form):
@@ -282,6 +284,7 @@ def add_user():
 @is_logged_in
 def add_patient():
     form = PatientForm(request.form)
+
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
@@ -311,18 +314,20 @@ def add_patient():
 def addpat():
 
     form = PatientForm(request.form)
+
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
         ServID = form.ServID.data
-
+        Price = form.Price.data
         # Create Cursor
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM articles")
         articles = cur.fetchall()
-        
+
+
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s, %s, %s, %s)",(PatientName, Address ,ServID , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName,Price, Address,ServID ,UserName) VALUES(%s,%s, %s, %s, %s)",(PatientName, Address ,Price,ServID , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -566,6 +571,8 @@ def autocomplete():
         return render_template('users.html', msg=msg)
     # Close connection
     cur.close()
+
+
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(debug=True)
