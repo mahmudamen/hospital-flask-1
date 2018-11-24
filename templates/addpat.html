@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends '_layoutpatient.html' %}
 
 {% block body %}
 <head>
@@ -6,6 +6,8 @@
     <title>Title</title>
 </head>
 <body>
+<div class="row">
+    <div class="col-md-12 ui-sortable">
 <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
@@ -17,31 +19,24 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> اسم المريض</label>
                                     <div class="col-md-9">
-                                        <input name="PatientName" type="text" class="form-control" placeholder="الاسم بالكامل">
+                                        <input name="PatientName" style="width:75%" type="text" class="form-control" placeholder="الاسم بالكامل">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">العنوان</label>
                                     <div class="col-md-9">
-                                        <input type="text" name="Address"  class="form-control" placeholder=" عنوان المنزل او العمل" >
+                                        <input type="text" name="Address" style="width:75%"  class="form-control" placeholder=" عنوان المنزل او العمل" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">الخدمة</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                    <div class="col-md-9" style="width:45%" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">السعر</label>
                                     <div class="col-md-9">
-                                        <input name="ServID" type="text" class="form-control" placeholder=" السعر" >
+                                        <input name="ServID" style="width:35%" type="text" class="form-control" placeholder=" السعر" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -53,5 +48,8 @@
                             </form>
                         </div>
                     </div>
+    </div>
+</div>
 </body>
+
 {% endblock %}

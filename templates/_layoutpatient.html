@@ -32,8 +32,36 @@
 		$(document).ready(function() {
 			App.init();
 			Dashboard.init();
+
+        $('#ServID').change(function() {
+
+          var foodkind = $('#ServID').val();
+
+          // Make Ajax Request and expect JSON-encoded data
+          $.getJSON(
+            '/get_food' + '/' + foodkind,
+            function(data) {
+
+              // Remove old options
+              $('#PatientName').find('option').remove();
+
+              // Add new items
+              $.each(data, function(key, val) {
+                var option_item = '<option value="' + val + '">' + val + '</option>'
+                $('#food').append(option_item);
+              });
+            }
+          );
+        });
 		});
 	</script>
+
+
+
+
+
+
+
     <title id="title">hospital</title>
   </head>
   <body>

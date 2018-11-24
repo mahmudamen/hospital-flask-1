@@ -205,7 +205,7 @@ def dashboardd():
     if result > 0:
         return render_template('dashboardd.html', patients=patients)
     else:
-        msg = 'No Articles Found'
+        msg = 'No Patient Found'
         return render_template('dashboardd.html', msg=msg)
     # Close connection
     cur.close()
@@ -245,8 +245,8 @@ class ServForm(Form):
 
 # users Form Class
 class usersForm(Form):
-    name = StringField(' name', [validators.Length(min=1, max=200)])
-    email = StringField('email', [validators.Length(min=1)])
+    name = StringField(' ', [validators.Length(min=1, max=200)])
+    email = StringField(' ', [validators.Length(min=1)])
 
 # Add user
 @app.route('/add_user', methods=['GET', 'POST'])
@@ -277,6 +277,7 @@ def add_user():
     return render_template('users.html', form=form)
 # Add patient
 @app.route('/add_patient', methods=['GET', 'POST'])
+@is_logged_in
 def add_patient():
     form = PatientForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -303,7 +304,37 @@ def add_patient():
     return render_template('add_patient.html', form=form)
 # Add patient with bootstrap
 @app.route('/addpat', methods=['GET', 'POST'])
+@is_logged_in
 def addpat():
+    form = PatientForm(request.form)
+    if request.method == 'POST' and form.validate():
+        PatientName = form.PatientName.data
+        Address = form.Address.data
+        ServID = form.ServID.data
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+        result = cur.execute("SELECT * FROM articles")
+        articles = cur.fetchall()
+        
+        # Execute
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
+
+        # Commit to DB
+        mysql.connection.commit()
+
+        #Close connection
+        cur.close()
+
+        flash('Patient Created', 'success')
+
+        return redirect(url_for('dashboardd'))
+
+    return render_template('addpat.html', form=form)
+# Add patient with bootstrap
+@app.route('/addpatientde', methods=['GET', 'POST'])
+@is_logged_in
+def addpatientde():
     form = PatientForm(request.form)
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
@@ -322,11 +353,11 @@ def addpat():
         #Close connection
         cur.close()
 
-        flash('Article Created', 'success')
+        flash('Patient Created', 'success')
 
         return redirect(url_for('dashboardd'))
 
-    return render_template('addpat.html', form=form)
+    return render_template('addpatientde.html', form=form)
 # add serv
 @app.route('/add_servList', methods=['GET', 'POST'])
 def add_servList():
