@@ -1,7 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
 from data import Articles
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms import  TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
+from wtforms import form, TextField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
 from flask_mysqldb import MySQL
@@ -240,8 +239,8 @@ class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
     ServID = SelectField(' ', choices=[('CA', 'California'), ('NV', 'Nevada')])
-
-    Price = StringField(' ', [validators.Length(min=1)])
+    Price = StringField(' ')
+    
 # serv form class
 class ServForm(Form):
     ServName = StringField('', [validators.Length(min=8, )])
@@ -263,7 +262,7 @@ def add_user():
 
 
         # Create Cursor
-        cur = mysql.aboutconnection.cursor()
+        cur = mysql.connection.cursor()
 
         # Execute
         cur.execute("INSERT INTO users( name, email) VALUES(%s, %s)",(name, email))
@@ -284,7 +283,10 @@ def add_user():
 @is_logged_in
 def add_patient():
     form = PatientForm(request.form)
+    xcur = mysql.connection.cursor()
+    xcur.execute("select ID , ServName form ServList")
 
+    xcur.close()
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
@@ -314,20 +316,18 @@ def add_patient():
 def addpat():
 
     form = PatientForm(request.form)
-
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
         ServID = form.ServID.data
-        Price = form.Price.data
+
         # Create Cursor
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM articles")
         articles = cur.fetchall()
-
-
+        
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName,Price, Address,ServID ,UserName) VALUES(%s,%s, %s, %s, %s)",(PatientName, Address ,Price,ServID , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s, %s, %s, %s)",(PatientName, Address ,ServID , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -428,7 +428,7 @@ def edit_user(id):
         #Close connection
         cur.close()
 
-        flash('User Updated', 'success')
+        flash('Article Updated', 'success')
 
         return redirect(url_for('users'))
 
@@ -454,17 +454,18 @@ def edit_patient(id):
     form.Address.data = article['Address']
     form.ServID.data = article['ServID']
     form.Price.data = article['Price']
+
     if request.method == 'POST' and form.validate():
         PatientName = request.form['PatientName']
         Address = request.form['Address']
-        ServID = request.form['ServID']
-        Price = request.form['Price']
+        form.ServID.data = article['ServID']
+        form.Price.data = article['Price']
 
         # Create Cursor
         cur = mysql.connection.cursor()
         app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE PatientList SET PatientName=%s,ServID=%s, Pricee=%s, Address=%s WHERE id=%s",(PatientName, Address,Price,ServID, id))
+        cur.execute ("UPDATE PatientList SET PatientName=%s, Address=%s WHERE id=%s",(PatientName, Address, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
@@ -571,8 +572,6 @@ def autocomplete():
         return render_template('users.html', msg=msg)
     # Close connection
     cur.close()
-
-
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(debug=True)

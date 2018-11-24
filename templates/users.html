@@ -2,25 +2,24 @@
 
 
 {% block body %}
-
+<a class="btn btn-success" href="/register"> اضافة مستخدم</a>
 <hr>
-<br>
 <div class="row">
 <div class="panel panel-inverse" data-sortable-id="form-stuff-3">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
 
                             </div>
-                            <h4 class="panel-title" center>hospital app</h4>
+                            <h4 class="panel-title" center> المستخدمين</h4>
                         </div>
                         <div class="panel-body">
                             <table id="patlist" class="table table-striped">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Edit</th>
-        <th>Delete</th>
+                    <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                        <th>Delete</th>
     </tr>
     {% for article in articles %}
       <tr>

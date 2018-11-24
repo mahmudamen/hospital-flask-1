@@ -1,7 +1,5 @@
 {% extends '_layoutUser.html' %}
 
-
-
 {% block body %}
 {% from "includes/_formhelpers.html" import render_field %}
 <head>
@@ -9,6 +7,7 @@
     <title>Title</title>
 </head>
 <body>
+        <a class="btn btn-success" href="/register"> اضافة مريض</a>
 <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
@@ -18,13 +17,13 @@
                         <div class="panel-body">
                             <form class="form-horizontal" method="POST" action="">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"> اسم الخدمة</label>
+                                    <label class="col-md-3 control-label"> اسم المستخدم</label>
                                     <div class="col-md-9">
       {{ render_field(form.name, class_="form-control") }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">السعر</label>
+                                    <label class="col-md-3 control-label">العنوان</label>
                                     <div class="col-md-9">
       {{ render_field(form.email, class_="form-control") }}
                                     </div>

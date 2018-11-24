@@ -7,7 +7,7 @@
                             </button>
                             <h3>  <small> مرحبا {{session.username}}</small></h3>
                         </div>
-  <a class="btn btn-success" href="/addpat"> اضافة مريض</a>
+  <a class="btn btn-success" id="refresh" href="/addpat"> اضافة مريض</a>
   <hr>
 <div class="panel panel-inverse" data-sortable-id="table-basic-7">
                         <div class="panel-heading">
@@ -18,7 +18,7 @@
                         </div>
                         <div class="panel-body">
 							<div class="table-responsive">
-						<table class="table table-striped">
+						<table id="tabMH" class="table table-striped">
     <tr>
       <th>ID</th>
       <th>name</th>
