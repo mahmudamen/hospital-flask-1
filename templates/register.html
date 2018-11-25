@@ -1,45 +1,55 @@
 
 {% extends '_layoutHome.html' %}
-
-
 {% block body %}
+{% from "includes/_formhelpers.html" import render_field %}
+<head>
+    <meta charset="UTF-8" lang="en-ar" dir="rtl">
+    <title>Title</title>
+</head>
+<body>
+<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                            </div>
+                            <h4 class="panel-title"> تسجيل بيانات موظف  </h4>
+                        </div>
+                        <div class="panel-body">
+                            <form  method="POST" action="">
+                                <div class="form-group form-inline ls_form" >
+                                    <label class="col-md-3 control-label"> اسم بالكامل</label>
+                               
+                                        {{render_field(form.name,id = "names", class_="form-control")}}
+                                  
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label">الايميل</label>
+                                
+                                        {{render_field(form.email, class_="form-control")}}
+                              
+                                </div>
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label">اسم</label>
+          
+                                        {{render_field(form.username, class_="form-control")}}
+                                    
+                                </div>
+                                    <div class="form-group">
+                                    {{render_field(form.password, class_="form-control")}}
+                                    </div>
+                                        <div class="form-group">
+                                        {{render_field(form.confirm, class_="form-control")}}
+                                    </div>
 
+                                </div>
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label">حفظ</label>
+                          
+                                        <button type="submit" class="btn btn-sm btn-success">احفظ </button>
+                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 </body>
-<div id="mdshift">
-    <div class="modal-med">
-        <div class="modal-content">
-              <form method="POST" action="">
-            <div class="modal-header">
-                <label class="modal-title">اضافة مريض </label>
-            </div>
-                  <form action="" method="POST">
-            <div class="modal-body">
-                <div class="row">
-  <h1>مستخدم جديد</h1>
-  {% from "includes/_formhelpers.html" import render_field %}
-  <form method="POST" action="">
-    <div class="form-group">
-      {{render_field(form.name,id = "names", class_="form-control")}}
-    </div>
-    <div class="form-group">
-      {{render_field(form.email, class_="form-control")}}
-    </div>
-    <div class="form-group">
-      {{render_field(form.username, class_="form-control")}}
-    </div>
-    <div class="form-group">
-      {{render_field(form.password, class_="form-control")}}
-    </div>
-    <div class="form-group">
-      {{render_field(form.confirm, class_="form-control")}}
-    </div>
-    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
-  </form>
-        </div>
-    </div>
-</div>
-  </form>
-
 {% endblock %}
-
-

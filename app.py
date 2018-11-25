@@ -7,13 +7,15 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+from flask_table import Table, Col
 import decimal
 app = Flask(__name__)
 Bootstrap(app)
-app.config['SECRET_KEY'] = "dontell"
+
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
+
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'testuser'
 app.config['MYSQL_PASSWORD'] = '2468@HitMan'
@@ -39,14 +41,14 @@ def about():
 
 # Register Form Class
 class RegisterForm(Form):
-    name = StringField('Name', [validators.Length(min=1, max=50)])
-    username = StringField('Username', [validators.Length(min=4, max=25)])
-    email = StringField('Email', [validators.Length(min=6, max=50)])
-    password = PasswordField('Password', [
+    name = StringField(' ', [validators.Length(min=1, max=50)])
+    username = StringField(' ', [validators.Length(min=4, max=25)])
+    email = StringField(' ', [validators.Length(min=6, max=50)])
+    password = PasswordField(' ', [
         validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords do not match')
+        validators.EqualTo(' ', message='Passwords do not match')
     ])
-    confirm = PasswordField('Confirm Password')
+    confirm = PasswordField('   ')
 
 # User Register
 @app.route('/register', methods=['GET', 'POST'])
@@ -239,8 +241,8 @@ def user():
 class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
-    ServID = SelectField(' ', choices=[('CA', 'California'), ('NV', 'Nevada')])
-    Price = DecimalField('Price')
+    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
+    Price = DecimalField(' ')
 
 # serv form class
 class ServForm(Form):
@@ -317,6 +319,15 @@ def add_patient():
 def addpat():
 
     form = PatientForm(request.form)
+    # Create cursor
+    cur = mysql.connection.cursor()
+    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
+    # Get articles
+    result = cur.execute("SELECT * FROM ServList")
+
+    article = cur.fetchone()
+    cur.close()
+
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
@@ -325,7 +336,7 @@ def addpat():
         # Create Cursor
         cur = mysql.connection.cursor()
         result = cur.execute("SELECT * FROM articles")
-        articles = cur.fetchall()
+        d = cur.fetchall()
         
         # Execute
         cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName,Price) VALUES(%s, %s, %s, %s,%s)",(PatientName, Address ,ServID , session['username'],Price))
@@ -340,7 +351,7 @@ def addpat():
 
         return redirect(url_for('dashboardd'))
 
-    return render_template('addpat.html', form=form)
+    return render_template('addpat.html',form=form)
 # Add patient with bootstrap
 @app.route('/addpatientde', methods=['GET', 'POST'])
 @is_logged_in
@@ -441,7 +452,7 @@ def edit_user(id):
 def edit_patient(id):
     # Create cursor
     cur = mysql.connection.cursor()
-
+    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
     # Get article by id
     result = cur.execute("SELECT * FROM PatientList WHERE id = %s", [id])
 
@@ -555,24 +566,17 @@ def delete_patient(id):
     flash('Patient Deleted', 'success')
 
     return redirect(url_for('dashboardd'))
-@app.route('/autocomplete', methods=['GET'])
-def autocomplete():
-    # Create cursor
-    cur = mysql.connection.cursor()
 
-    # Get articles
-    # result = cur.execute("SELECT * FROM articles")
-    # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM users  ")
-    articles = cur.fetchall()
-    if result > 0:
-        return jsonify(data=articles)
-
-    else:
-        msg = 'No users  Found'
-        return render_template('users.html', msg=msg)
-    # Close connection
-    cur.close()
+class Results(Table):
+    id = Col('Id', show=False)
+    artist = Col('Artist')
+    title = Col('Title')
+    release_date = Col('Release Date')
+    publisher = Col('Publisher')
+    media_type = Col('Media')
 if __name__ == '__main__':
     app.secret_key='secret123'
+    app.run(host='0.0.0.0', port=5000)
+  #  app.run(host='0.0.0.0', port=8090)
+
     app.run(debug=True)
