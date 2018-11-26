@@ -1,8 +1,9 @@
 $(document).ready(function(){
-
-
-$('#names').value('dsfkalsdfjk');
-
-
-});
-
+            
+            
+    $('#refresh').click(function(){
+        console.log('sdafasdfasa');
+    });
+    
+    
+    });

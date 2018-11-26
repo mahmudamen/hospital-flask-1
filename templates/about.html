@@ -1,22 +1,6 @@
-{% extends "bootstrap/base.html" %}
-
-{% block content %}
-<h1>Hello</h1>
-<div class="alert alert-success" role="alert">
-  <a href="#" class="alert-link">One</a>
-</div>
-<div class="alert alert-info" role="alert">
-  <a href="#" class="alert-link">Two</a>
-</div>
-<div class="alert alert-warning" role="alert">
-  <a href="#" class="alert-link">Three</a>
-</div>
-<div class="alert alert-danger" role="alert">
-  <a href="#" class="alert-link">Four</a>
-</div>
-{% endblock %}
-
-{% block scripts %}
-{{ super() }}
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-{% endblock %}
+<!doctype html>
+{%if user %}
+    <h1>h1</h1>
+{%else%}
+<h2>h2</h2>
+{% endif %}

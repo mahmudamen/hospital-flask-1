@@ -7,13 +7,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
-                        <div class="panel-heading">
-                            <div class="panel-heading-btn">
-                            </div>
-                            <h4 class="panel-title">تعديل بيانات مريض </h4>
-                        </div>
+    <body>
+        <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+            <div class="panel-heading">
+                <div class="panel-heading-btn">
+
+            </div>
+            <h4 class="panel-title">تعديل بيانات مريض </h4>
+            </div>
                         <div class="panel-body">
                             <form class="form-horizontal" method="POST" action="">
                                 <div class="form-group form-inline ls_form" >
@@ -31,7 +32,7 @@
                                 <div class="form-group form-inline ls_form">
                                     <label class="col-md-3 control-label">الخدمة</label>
                                     <div class="col-md-9">
-                                      {{ render_field(form.ServID, class_="form-control") }}
+                                        {{ form.ServID  }}
                                     </div>
                                 </div>
                                 <div class="form-group form-inline ls_form">
@@ -49,5 +50,5 @@
                             </form>
                         </div>
                     </div>
-</body>
+                </body>
 {% endblock %}

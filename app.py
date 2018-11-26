@@ -34,9 +34,10 @@ def index():
     return render_template('home.html')
 
 # About
+@app.route("/")
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', user=user)
 
 
 # Register Form Class
@@ -241,7 +242,7 @@ def user():
 class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
-    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
+    ServID = SelectField(' ', choices=[('1', 'aCalifornia'), ('2', 'Nevada')])
     Price = DecimalField(' ')
 
 # serv form class
@@ -321,9 +322,10 @@ def addpat():
     form = PatientForm(request.form)
     # Create cursor
     cur = mysql.connection.cursor()
-    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
+    ServID = SelectField(' ', choices=[('1', 'aCalifornia'), ('2', 'Nevada')])
     # Get articles
     result = cur.execute("SELECT * FROM ServList")
+
 
     article = cur.fetchone()
     cur.close()
@@ -351,7 +353,7 @@ def addpat():
 
         return redirect(url_for('dashboardd'))
 
-    return render_template('addpat.html',form=form)
+    return render_template('addpat.html',form=form , ServID=ServID)
 # Add patient with bootstrap
 @app.route('/addpatientde', methods=['GET', 'POST'])
 @is_logged_in
@@ -452,7 +454,7 @@ def edit_user(id):
 def edit_patient(id):
     # Create cursor
     cur = mysql.connection.cursor()
-    ServID = SelectField(' ', choices=[('1', 'California'), ('2', 'Nevada')])
+
     # Get article by id
     result = cur.execute("SELECT * FROM PatientList WHERE id = %s", [id])
 
@@ -567,13 +569,7 @@ def delete_patient(id):
 
     return redirect(url_for('dashboardd'))
 
-class Results(Table):
-    id = Col('Id', show=False)
-    artist = Col('Artist')
-    title = Col('Title')
-    release_date = Col('Release Date')
-    publisher = Col('Publisher')
-    media_type = Col('Media')
+
 if __name__ == '__main__':
     app.secret_key='secret123'
     app.run(host='0.0.0.0', port=5000)
