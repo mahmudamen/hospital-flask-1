@@ -3,19 +3,21 @@ from data import Articles
 from wtforms import form, TextField, DecimalField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
+#import MySQLdb as MySQL
 from flask_mysqldb import MySQL
+import hashlib as hash
+#from flaskext.mysql import MySQL
+
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
-from flask_table import Table, Col
 import decimal
 app = Flask(__name__)
 Bootstrap(app)
-
+app.config['SECRET_KEY'] = "dontell"
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
-
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'testuser'
 app.config['MYSQL_PASSWORD'] = '2468@HitMan'
@@ -32,25 +34,43 @@ json = FlaskJSON(app)
 @app.route('/')
 def index():
     return render_template('home.html')
-
 # About
-@app.route("/")
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
-    return render_template('about.html', user=user)
+    form = PatientForm(request.form)
+    # app.logger.info(help(form))
+    if request.method == 'POST' and form.validate():
+        PatientName = form.PatientName.data
 
+        app.logger.info(PatientName)
+        # Create Cursor
+        cur = mysql.connection.cursor()
 
+        # Execute
+        cur.execute("INSERT INTO xpatient( PatientName) VALUES(%s )", (PatientName))
+
+        # Commit to DB
+        mysql.connection.commit()
+
+        # Close connection
+        cur.close()
+
+        flash('Patient  Created', 'success')
+
+        return redirect(url_for('Patient'))
+
+    return render_template('about.html', form=form)
 # Register Form Class
 class RegisterForm(Form):
-    name = StringField(' ', [validators.Length(min=1, max=50)])
-    username = StringField(' ', [validators.Length(min=4, max=25)])
-    email = StringField(' ', [validators.Length(min=6, max=50)])
-    password = PasswordField(' ', [
+    name = StringField('Name', [validators.Length(min=1, max=50)])
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    email = StringField('Email', [validators.Length(min=6, max=50)])
+    password = PasswordField('Password', [
         validators.DataRequired(),
-        validators.EqualTo(' ', message='Passwords do not match')
+        validators.EqualTo('confirm', message='Passwords do not match')
     ])
-    confirm = PasswordField('   ')
-
+    confirm = PasswordField('Confirm Password')
+#
 # User Register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,8 +80,10 @@ def register():
         name = form.name.data
         email = form.email.data
         username = form.username.data
-       # password = sha256_crypt.encrypt(str(form.password.data))
         password = sha256_crypt.encrypt(str(form.password.data))
+        #password = hash.sha256(str(form.password.data)).hexdigest()
+        app.logger.info(password)
+        app.logger.info(form.password.data)
         # Create cursor
         cur = mysql.connection.cursor()
 
@@ -192,7 +214,6 @@ def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('login'))
-
 # Dashboard2
 @app.route('/dashboardd')
 @is_logged_in
@@ -203,7 +224,7 @@ def dashboardd():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM PatientList ")
+    result = cur.execute("SELECT * FROM Patient")
 
     patients = cur.fetchall()
 
@@ -228,10 +249,10 @@ def patient():
     patients = cur.fetchall()
 
     if result > 0:
-        return render_template('dashboardd.html', patients=patients)
+        return render_template('patient.html', patients=patients)
     else:
-        msg = 'No Articles Found'
-        return render_template('dashboardd.html', msg=msg)
+        msg = 'No patient Found'
+        return render_template('patient.html', msg=msg)
     # Close connection
     cur.close()
 @app.route('/user')
@@ -242,14 +263,12 @@ def user():
 class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
-    ServID = SelectField(' ', choices=[('1', 'aCalifornia'), ('2', 'Nevada')])
+    ServID = SelectField(' ')
     Price = DecimalField(' ')
-
 # serv form class
 class ServForm(Form):
-    ServName = StringField('', [validators.Length(min=8, )])
+    ServName = StringField('', [validators.Length(min=3)])
     Price = StringField('' )
-
 # users Form Class
 class usersForm(Form):
     name = StringField(' ', [validators.Length(min=1, max=200)])
@@ -282,66 +301,21 @@ def add_user():
         return redirect(url_for('users'))
 
     return render_template('users.html', form=form)
-# Add patient
-@app.route('/add_patient', methods=['GET', 'POST'])
-@is_logged_in
-def add_patient():
-    form = PatientForm(request.form)
-    xcur = mysql.connection.cursor()
-    xcur.execute("select ID , ServName form ServList")
-
-    xcur.close()
-    if request.method == 'POST' and form.validate():
-        PatientName = form.PatientName.data
-        Address = form.Address.data
-        ServID = form.ServID.data
-
-        # Create Cursor
-        cur = mysql.connection.cursor()
-
-        # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
-
-        # Commit to DB
-        mysql.connection.commit()
-
-        #Close connection
-        cur.close()
-
-        flash('Article Created', 'success')
-
-        return redirect(url_for('dashboardd'))
-
-    return render_template('add_patient.html', form=form)
 # Add patient with bootstrap
-
 @app.route('/addpat', methods=['GET', 'POST'])
 @is_logged_in
 def addpat():
 
     form = PatientForm(request.form)
-    # Create cursor
-    cur = mysql.connection.cursor()
-    ServID = SelectField(' ', choices=[('1', 'aCalifornia'), ('2', 'Nevada')])
-    # Get articles
-    result = cur.execute("SELECT * FROM ServList")
-
-
-    article = cur.fetchone()
-    cur.close()
-
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
-        ServID = form.ServID.data
+        #ServID = form.ServID.data
         Price = form.Price.data
         # Create Cursor
         cur = mysql.connection.cursor()
-        result = cur.execute("SELECT * FROM articles")
-        d = cur.fetchall()
-        
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName,Price) VALUES(%s, %s, %s, %s,%s)",(PatientName, Address ,ServID , session['username'],Price))
+        cur.execute("INSERT INTO Patient( PatientName, Address,Price) VALUES(%s)",(PatientName,Address,Price))
 
         # Commit to DB
         mysql.connection.commit()
@@ -352,12 +326,20 @@ def addpat():
         flash('Patient Created', 'success')
 
         return redirect(url_for('dashboardd'))
+    else:
+        flash('Patient Created', 'danger')
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT ID , ServName FROM ServList")
+    serv = cur.fetchall()
+    app.logger.info(type(serv))
+    app.logger.info(serv)
+    app.logger.info(serv[0]['ServName'])
+    return render_template('addpat.html', form=form,serv=serv)
 
-    return render_template('addpat.html',form=form , ServID=ServID)
 # Add patient with bootstrap
-@app.route('/addpatientde', methods=['GET', 'POST'])
+@app.route('/add_patient', methods=['GET', 'POST'])
 @is_logged_in
-def addpatientde():
+def add_patient():
     form = PatientForm(request.form)
     if request.method == 'POST' and form.validate():
         PatientName = form.PatientName.data
@@ -368,7 +350,7 @@ def addpatientde():
         cur = mysql.connection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
+        cur.execute("INSERT INTO Patient( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -380,16 +362,17 @@ def addpatientde():
 
         return redirect(url_for('dashboardd'))
 
-    return render_template('addpatientde.html', form=form)
+    return render_template('add_patient.html', form=form)
 # add serv
 @app.route('/add_servList', methods=['GET', 'POST'])
 def add_servList():
     form = ServForm(request.form)
+    # app.logger.info(help(form))
     if request.method == 'POST' and form.validate():
         ServName = form.ServName.data
         Price = form.Price.data
-
-
+        app.logger.info(Price)
+        app.logger.info(ServName)
         # Create Cursor
         cur = mysql.connection.cursor()
 
@@ -407,7 +390,6 @@ def add_servList():
         return redirect(url_for('serv'))
 
     return render_template('add_servList.html', form=form)
-
 # Edit user
 @app.route('/edit_user/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
@@ -447,7 +429,6 @@ def edit_user(id):
         return redirect(url_for('users'))
 
     return render_template('edit_user.html', form=form)
-
 # Edit delete patient
 @app.route('/edit_patient/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
@@ -456,7 +437,7 @@ def edit_patient(id):
     cur = mysql.connection.cursor()
 
     # Get article by id
-    result = cur.execute("SELECT * FROM PatientList WHERE id = %s", [id])
+    result = cur.execute("SELECT * FROM Patient WHERE id = %s", [id])
 
     article = cur.fetchone()
     cur.close()
@@ -479,7 +460,7 @@ def edit_patient(id):
         cur = mysql.connection.cursor()
         app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE PatientList SET PatientName=%s,ServID=%s,Price=%s ,Address=%s WHERE id=%s",(PatientName,ServID,Price, Address, id))
+        cur.execute ("UPDATE Patient SET PatientName=%s WHERE id=%s",(PatientName, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
@@ -488,9 +469,15 @@ def edit_patient(id):
 
         flash('Patient Updated', 'success')
 
-        return redirect(url_for('dashboardd'))
+        return redirect(url_for('patient'))
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT ID , ServName FROM ServList")
+    serv = cur.fetchall()
+    app.logger.info(type(serv))
+    app.logger.info(serv)
+    app.logger.info(serv[0]['ServName'])
 
-    return render_template('edit_patient.html', form=form)
+    return render_template('edit_patient.html', form=form )
 # Edit delete serv
 @app.route('/edit_serv/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
@@ -530,7 +517,6 @@ def edit_serv(id):
         return redirect(url_for('serv'))
 
     return render_template('edit_serv.html', form=form)
-
 # Delete user
 @app.route('/delete_user/<string:id>', methods=['POST'])
 @is_logged_in
@@ -547,9 +533,27 @@ def delete_user(id):
     #Close connection
     cur.close()
 
-    flash('user Deleted', 'success')
+    flash('serv Deleted', 'success')
 
-    return redirect(url_for('user'))
+    return redirect(url_for('users'))
+@app.route('/delete_serv/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_serv(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Execute
+    cur.execute("DELETE FROM ServList WHERE id = %s", [id])
+
+    # Commit to DB
+    mysql.connection.commit()
+
+    #Close connection
+    cur.close()
+
+    flash('serv Deleted', 'success')
+
+    return redirect(url_for('serv'))
 @app.route('/delete_patient/<string:id>', methods=['POST'])
 @is_logged_in
 def delete_patient(id):
@@ -568,11 +572,54 @@ def delete_patient(id):
     flash('Patient Deleted', 'success')
 
     return redirect(url_for('dashboardd'))
+@app.route('/add_item', methods=['GET', 'POST'])
+def add_item():
+    form = ServForm(request.form)
+    # app.logger.info(help(form))
+    if request.method == 'POST' and form.validate():
+        ItemName = form.ItemName.data
+        Price = form.Price.data
+        app.logger.info(Price)
+        app.logger.info(ItemName)
+        # Create Cursor
+        cur = mysql.connection.cursor()
 
+        # Execute
+        cur.execute("INSERT INTO ItemList( ItemName, Price) VALUES(%s,%s )", (ItemName, Price))
 
+        # Commit to DB
+        mysql.connection.commit()
+
+        # Close connection
+        cur.close()
+
+        flash('Item  Created', 'success')
+
+        return redirect(url_for('item'))
+
+    return render_template('add_item.html', form=form)
+@app.route('/item')
+def item():
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get articles
+    #result = cur.execute("SELECT * FROM articles")
+    # Show articles only from the user logged in
+    result = cur.execute("SELECT * FROM ItemList")
+
+    articles = cur.fetchall()
+
+    if result > 0:
+        return render_template('item.html', articles=articles)
+    else:
+        msg = 'No service Found'
+        return render_template('item.html', msg=msg)
+    # Close connection
+    cur.close()
+class itemform(Form):
+    ItemName = StringField('', [validators.Length(min=4, max=25)])
+    Price = DecimalField('')
 if __name__ == '__main__':
     app.secret_key='secret123'
-    app.run(host='0.0.0.0', port=5000)
-  #  app.run(host='0.0.0.0', port=8090)
-
     app.run(debug=True)

@@ -2,17 +2,6 @@
 
 {% block body %}
 <head>
-        <script type=text/javascript>
-            $(document).ready(function(){
-            
-            
-            $('#refresh').click(function(){
-                console.log('sdafasdfasa');
-            });
-            
-            
-            });
-              </script>
     <meta charset="utf-8" lang="en-ar" dir="rtl" />
     <title>Title</title>
 </head>
@@ -21,11 +10,6 @@
 <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
     <div class="panel-heading">
         <div class="panel-heading-btn">
-            <div class="btn-group m-r-5 pull-left">
-                <button class="btn-group-sm btn-icon btn-square btn-info pull-left" title="تبديل "  id="btbillexpand"><i class="fa fa-expand"></i></button>
-                <button class="btn-group-sm btn-icon btn-square btn-success pull-left" title="تحديث " id="refresh"><i class="fa fa-repeat"></i></button>
-                <button class="btn-group-sm btn-icon btn-square btn-warning pull-left" title="تعديل البيانات " id="patedit"><i class="fa fa-edit"></i></button>
-                </div>
                             </div>
                             <h4 class="panel-title">اضافة مريض جديد</h4>
                             
@@ -35,19 +19,23 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> اسم المريض</label>
                                     <div class="col-md-9">
-                                        <input name="PatientName" style="width:75%" type="text" class="form-control" placeholder="الاسم بالكامل">
+                                        <input name="PatientName" style="width:50%" type="text" class="form-control" placeholder="الاسم بالكامل">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">العنوان</label>
                                     <div class="col-md-9">
-                                        <input type="text" name="Address" style="width:75%"  class="form-control" placeholder=" عنوان المنزل او العمل" >
+                                        <input type="text" name="Address" style="width:50%"  class="form-control" placeholder=" عنوان المنزل او العمل" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">الخدمة</label>
                                     <div class="col-md-9" style="width:45%" >
-                                        {{ ServID.ServID  }}
+                                <select id="ServID" name="ServID">
+                                    {% for item in serv %}
+                                        <option value={{item.ID}}>{{ item.ServName }}</option>
+                                    {% endfor %}
+                                </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

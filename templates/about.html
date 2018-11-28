@@ -1,6 +1,56 @@
-<!doctype html>
-{%if user %}
-    <h1>h1</h1>
-{%else%}
-<h2>h2</h2>
-{% endif %}
+{% extends '_layoutpatient.html' %}
+
+{% block body %}
+<head>
+    <meta charset="utf-8" lang="en-ar" dir="rtl" />
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
+                            </div>
+                            <h4 class="panel-title">اضافة مريض جديد</h4>
+
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" method="POST" action="">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> اسم المريض</label>
+                                    <div class="col-md-9">
+                                        <input name="PatientName" style="width:50%" type="text" class="form-control" placeholder="الاسم بالكامل">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">العنوان</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="Address" style="width:50%"  class="form-control" placeholder=" عنوان المنزل او العمل" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">الخدمة</label>
+                                    <div class="col-md-9" style="width:45%" >
+                                          <input name="ServID" style="width:35%" type="text" class="form-control" placeholder=" السعر" >
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">السعر</label>
+                                    <div class="col-md-9">
+                                        <input name="Price" style="width:35%" type="text" class="form-control" placeholder=" السعر" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> </label>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-sm btn-success"> حفظ</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+</div>
+</body>
+
+{% endblock %}

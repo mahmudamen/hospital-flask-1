@@ -1,0 +1,39 @@
+{% extends '_layoutserv.html' %}
+
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                            </div>
+                            <h4 class="panel-title">اضافة صنف جديد</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" method="POST" action="">
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label"> اسم الصنف</label>
+                                    <div class="col-md-9">
+                                        <input name="ItemName" type="text" class="form-control" placeholder="اسم الصنف ">
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label">السعر</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="Price"  class="form-control" placeholder=" السعر" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline ls_form">
+                                    <label class="col-md-3 control-label"> </label>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-sm btn-success"> حفظ</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+</body>
+{% endblock %}

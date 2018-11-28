@@ -1,73 +1,56 @@
-{% extends '_layoutHome.html' %}
-
+{% extends '_layoutpatient.html' %}
 
 {% block body %}
-
-</body>
-<div class="col-md-12 ui-sortable">
-			        <!-- begin panel -->
-                    <div class="panel panel-inverse" data-sortable-id="form-validation-1">
-                        <div class="panel-heading">
-                            <div class="panel-heading-btn">
-
+<head>
+    <meta charset="utf-8" lang="en-ar" dir="rtl" />
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+<div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+    <div class="panel-heading">
+        <div class="panel-heading-btn">
                             </div>
-                            <h4 class="panel-title">Basic Form Validation</h4>
+                            <h4 class="panel-title">اضافة مريض جديد</h4>
+
                         </div>
-                        <div class="panel-body panel-form">
-                            <form class="form-horizontal form-bordered" data-parsley-validate="true" name="demo-form" novalidate="">
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="fullname">Full Name * :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control" type="text" id="fullname" name="fullname" placeholder="Required" data-parsley-required="true" data-parsley-id="8184"><ul class="parsley-errors-list" id="parsley-id-8184"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="email">Email * :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control" style="width:70%" type="text" id="email" name="email" data-parsley-type="email" placeholder="Email" data-parsley-required="true" data-parsley-id="6402"><ul class="parsley-errors-list" id="parsley-id-6402"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="website">Website :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control"  style="width:70%"  type="url" id="website" name="website" data-parsley-type="url" placeholder="url" data-parsley-id="6350"><ul class="parsley-errors-list" id="parsley-id-6350"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="message">Message (20 chars min, 200 max) :</label>
-									<div class="col-md-6 col-sm-6">
-										<textarea class="form-control" id="message" name="message" rows="4" data-parsley-range="[20,200]" placeholder="Range from 20 - 200" data-parsley-id="4827"></textarea><ul class="parsley-errors-list" id="parsley-id-4827"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="message">Digits :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control" type="text" id="digits" name="digits" data-parsley-type="digits" placeholder="Digits" data-parsley-id="9189"><ul class="parsley-errors-list" id="parsley-id-9189"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="message">Number :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control" type="text" id="number" name="number" data-parsley-type="number" placeholder="Number" data-parsley-id="2279"><ul class="parsley-errors-list" id="parsley-id-2279"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4" for="message">Phone :</label>
-									<div class="col-md-6 col-sm-6">
-										<input class="form-control" type="text" id="data-phone" data-parsley-type="number" placeholder="(XXX) XXXX XXX" data-parsley-id="3520"><ul class="parsley-errors-list" id="parsley-id-3520"></ul>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-md-4 col-sm-4"></label>
-									<div class="col-md-6 col-sm-6">
-										<button type="submit" class="btn btn-primary">Submit</button>
-									</div>
-								</div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" method="POST" action="">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> اسم المريض</label>
+                                    <div class="col-md-9">
+                                        <input name="PatientName" style="width:50%" type="text" class="form-control" placeholder="الاسم بالكامل">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">العنوان</label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="Address" style="width:50%"  class="form-control" placeholder=" عنوان المنزل او العمل" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">الخدمة</label>
+                                    <div class="col-md-9" style="width:45%" >
+                                        <input type="text" name="ServID" style="width:50%"  class="form-control" placeholder=" رقم الخدمة" >
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">السعر</label>
+                                    <div class="col-md-9">
+                                        <input name="Price" style="width:35%" type="text" class="form-control" placeholder=" السعر" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> </label>
+                                    <div class="col-md-9">
+                                        <button type="submit" class="btn btn-sm btn-success"> حفظ</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
-                    <!-- end panel -->
-                </div>
-  </form>
+</div>
+</body>
 
 {% endblock %}

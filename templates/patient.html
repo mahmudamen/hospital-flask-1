@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <a class="btn btn-success" id="refresh" href="/addpat"> اضافة مريض</a>
+  <hr>
+<div class="panel panel-inverse" data-sortable-id="table-basic-7">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+
+                            </div>
+                            <h4 class="panel-title"> قائمة المرضي</h4>
+                        </div>
+                        <div class="panel-body">
+							<div class="table-responsive">
+						<table id="tabMH" class="table table-striped">
+                          <tr>
+                            <th>ID</th>
+                            <th>name</th>
+                            <th>address</th>
+                            <th>Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                          </tr>
+                          {% for patient in patients %}
+                           <tr>
+                          <td>{{patient.ID}}</td>
+                          <td>{{patient.PatientName}}</td>
+                          <td>{{patient.Address}}</td>
+                          <td>{{patient.CreateDate}}</td>
+                          <td><a href="edit_patient/{{patient.ID}}" class="btn btn-default pull-right">edit</a></td>
+                          <td>
+                            <form action="{{url_for('delete_patient', id=patient.ID)}}" method="post">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <input type="submit" value="d" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+          {% endfor %}
+                           </table>
+							</div>
+
+						</div>
+					</div>
+
+
+{% endblock %}

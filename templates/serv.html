@@ -28,7 +28,7 @@
            <td>{{article.Price}}</td>
         <td><a href="edit_serv/{{article.ID}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
-          <form action="{{url_for('delete_user', id=article.id)}}" method="post">
+          <form action="{{url_for('delete_serv', id=article.ID)}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete" class="btn btn-danger">
           </form>
