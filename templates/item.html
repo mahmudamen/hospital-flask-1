@@ -1,10 +1,10 @@
 {% extends '_layoutUser.html' %}
 {% block body %}
 <body>
-  <a class="btn btn-success" href="/add_item"> اضافة خدمة جديدة</a>
+  <a class="btn btn-success" href="/add_item"> اضافة اصناف جديدة</a>
              <hr>
                 <div class="panel-heading" style="height: 50%;">
-                    <label class="panel-title" style="font-size:13pt;">  قائمة الخدمات </label>
+                    <label class="panel-title" style="font-size:13pt;">  قائمة الاصناف </label>
                 </div>
                 <div class="panel-body" id="panelwaitlist" style="max-height:100%;   min-height:100%; padding:5px">
 
@@ -21,9 +21,9 @@
         <td>{{article.ID}}</td>
         <td>{{article.ItemName}}</td>
            <td>{{article.Price}}</td>
-        <td><a href="edit_user/{{article.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td><a href="edit_item/{{article.ID}}" class="btn btn-default pull-right">Edit</a></td>
         <td>
-          <form action="{{url_for('delete_user', id=article.id)}}" method="post">
+          <form action="{{url_for('delete_item', id=article.ID)}}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete" class="btn btn-danger">
           </form>

@@ -307,15 +307,15 @@ def add_user():
 def addpat():
 
     form = PatientForm(request.form)
-    if request.method == 'POST' and form.validate():
-        PatientName = form.PatientName.data
-        Address = form.Address.data
-        #ServID = form.ServID.data
-        Price = form.Price.data
+    if request.method == 'POST' : #and form.validate():
+        PatientName = str(form.PatientName.data)
+        Address = str(form.Address.data)
+        ServID = str(form.ServID.data)
+        Price = str(form.Price.data)
         # Create Cursor
         cur = mysql.connection.cursor()
         # Execute
-        cur.execute("INSERT INTO Patient( PatientName, Address,Price) VALUES(%s)",(PatientName,Address,Price))
+        cur.execute("INSERT INTO Patient( PatientName,Address,ServID,Price) VALUES(%s,%s,%s,%s)",(PatientName,Address,ServID,Price))
 
         # Commit to DB
         mysql.connection.commit()
@@ -328,6 +328,7 @@ def addpat():
         return redirect(url_for('dashboardd'))
     else:
         flash('Patient Created', 'danger')
+
     cur = mysql.connection.cursor()
     result = cur.execute("SELECT ID , ServName FROM ServList")
     serv = cur.fetchall()
@@ -478,6 +479,44 @@ def edit_patient(id):
     app.logger.info(serv[0]['ServName'])
 
     return render_template('edit_patient.html', form=form )
+@app.route('/edit_item/<string:id>', methods=['GET', 'POST'])
+@is_logged_in
+def edit_item(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get article by id
+    result = cur.execute("SELECT * FROM ItemList WHERE id = %s", [id])
+
+    article = cur.fetchone()
+    cur.close()
+    # Get form
+    form = itemform(request.form)
+
+    # Populate article form fields
+    form.ItemName.data = article['ItemName']
+    form.Price.data = article['Price']
+
+    if request.method == 'POST' and form.validate():
+        ItemName = request.form['ItemName']
+        Price = request.form['Price']
+
+        # Create Cursor
+        cur = mysql.connection.cursor()
+        app.logger.info(ItemName)
+        # Execute
+        cur.execute("UPDATE ItemList SET ItemName=%s, Price=%s WHERE id=%s", (ItemName, Price, id))
+        # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
+        mysql.connection.commit()
+
+        # Close connection
+        cur.close()
+
+        flash('Item Updated', 'success')
+
+        return redirect(url_for('item'))
+
+    return render_template('edit_item.html', form=form)
 # Edit delete serv
 @app.route('/edit_serv/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
@@ -572,9 +611,27 @@ def delete_patient(id):
     flash('Patient Deleted', 'success')
 
     return redirect(url_for('dashboardd'))
+@app.route('/delete_item/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_item(id):
+    # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Execute
+    cur.execute("DELETE FROM ItemList WHERE id = %s", [id])
+
+    # Commit to DB
+    mysql.connection.commit()
+
+    #Close connection
+    cur.close()
+
+    flash('item Deleted', 'success')
+
+    return redirect(url_for('item'))
 @app.route('/add_item', methods=['GET', 'POST'])
 def add_item():
-    form = ServForm(request.form)
+    form = itemform(request.form)
     # app.logger.info(help(form))
     if request.method == 'POST' and form.validate():
         ItemName = form.ItemName.data
@@ -596,7 +653,6 @@ def add_item():
         flash('Item  Created', 'success')
 
         return redirect(url_for('item'))
-
     return render_template('add_item.html', form=form)
 @app.route('/item')
 def item():
