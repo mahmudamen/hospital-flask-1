@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8a502d9-76b7-4e02-8475-d73d6dd55d12" name="Default Changelist" comment="html edit patient">
-      <change afterPath="$PROJECT_DIR$/templates/edit_item.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery-1.10.2.intellisense.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery-1.10.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.skip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.slimscroll.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.treeview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.treeview.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.validate-vsdoc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.validate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.validate.unobtrusive.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jquery.validate.unobtrusive.min.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="317" column="94" selection-start-line="317" selection-start-column="94" selection-end-line="317" selection-end-column="94" />
+            <state relative-caret-position="203">
+              <caret line="457" column="42" selection-start-line="457" selection-start-column="42" selection-end-line="457" selection-end-column="42" />
               <folding>
                 <element signature="e#0#107#0" expanded="true" />
                 <element signature="e#1222#1257#0" />
@@ -37,8 +46,11 @@
                 <element signature="e#7777#7813#0" />
                 <element signature="e#8095#8178#0" />
                 <element signature="e#8225#8342#0" />
+                <element signature="e#9108#10071#0" />
+                <element signature="e#10191#10890#0" />
+                <element signature="e#10979#11661#0" />
                 <element signature="e#11773#12754#0" />
-                <element signature="e#12882#14296#0" />
+                <element signature="e#14396#15398#0" />
                 <element signature="e#15517#16529#0" />
                 <element signature="e#16640#16929#0" />
                 <element signature="e#17026#17317#0" />
@@ -533,8 +545,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>396</line>
-          <option name="timeStamp" value="6" />
+          <line>435</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -886,8 +898,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="317" column="94" selection-start-line="317" selection-start-column="94" selection-end-line="317" selection-end-column="94" />
+        <state relative-caret-position="203">
+          <caret line="457" column="42" selection-start-line="457" selection-start-column="42" selection-end-line="457" selection-end-column="42" />
           <folding>
             <element signature="e#0#107#0" expanded="true" />
             <element signature="e#1222#1257#0" />
@@ -902,8 +914,11 @@
             <element signature="e#7777#7813#0" />
             <element signature="e#8095#8178#0" />
             <element signature="e#8225#8342#0" />
+            <element signature="e#9108#10071#0" />
+            <element signature="e#10191#10890#0" />
+            <element signature="e#10979#11661#0" />
             <element signature="e#11773#12754#0" />
-            <element signature="e#12882#14296#0" />
+            <element signature="e#14396#15398#0" />
             <element signature="e#15517#16529#0" />
             <element signature="e#16640#16929#0" />
             <element signature="e#17026#17317#0" />

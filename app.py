@@ -452,16 +452,16 @@ def edit_patient(id):
     form.Price.data = article['Price']
 
     if request.method == 'POST' and form.validate():
-        PatientName = request.form['PatientName']
-        Address = request.form['Address']
-        ServID = request.form['ServID']
-        Price = request.form['Price']
+        PatientName = str(request.form['PatientName'])
+        Address = str(request.form['Address'])
+        ServID = str(request.form['ServID'])
+        Price = str(request.form['Price'])
 
         # Create Cursor
         cur = mysql.connection.cursor()
         app.logger.info(PatientName)
         # Execute
-        cur.execute ("UPDATE Patient SET PatientName=%s WHERE id=%s",(PatientName, id))
+        cur.execute ("UPDATE Patient SET PatientName=%s , Address=%s , ServID=%s,Price=%s WHERE id=%s",(PatientName,Address,ServID,Price, id))
         # Commit to DBDoctors/Doctor/MDetails?id=' + $('#vpatid').val()
         mysql.connection.commit()
 
