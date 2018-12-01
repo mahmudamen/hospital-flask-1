@@ -18,10 +18,10 @@ app.config['SECRET_KEY'] = "dontell"
 # mysql -u root -p
 # GRANT ALL ON root.* To 'root'@'localhost' IDENTIFIED BY '123456';
 # Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'testuser'
-app.config['MYSQL_PASSWORD'] = '2468@HitMan'
-app.config['MYSQL_DB'] = 'erp'
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'hos'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
@@ -120,7 +120,7 @@ def login():
             password = data['password']
 
             # Compare Passwords
-            if sha256_crypt.verify(password_candidate, password):
+            if str(hash.sha256(password_candidate).hexdigest()) == str(password):
                 # Passed
                 session['logged_in'] = True
                 session['username'] = username
@@ -224,7 +224,7 @@ def dashboardd():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM Patient")
+    result = cur.execute("SELECT * FROM PatientList")
 
     patients = cur.fetchall()
 
