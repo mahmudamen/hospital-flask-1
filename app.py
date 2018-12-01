@@ -331,11 +331,11 @@ def addpat():
         flash('Patient Created', 'danger')
 
     cur = mysql.connection.cursor()
-    result = cur.execute("SELECT ID , ServName FROM Patient")
+    result = cur.execute("SELECT ID , ServName FROM ServList")
     serv = cur.fetchall()
     app.logger.info(type(serv))
     app.logger.info(serv)
-    app.logger.info(serv[0]['ServName'])
+    # app.logger.info(serv[0]['ServName'])
     return render_template('addpat.html', form=form,serv=serv)
 
 # Add patient with bootstrap
