@@ -157,7 +157,7 @@ def tab():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM users  ")
+    result = cur.execute("SELECT * FROM users")
     articles = cur.fetchall()
     if result > 0:
         return jsonify(data = articles)
@@ -224,7 +224,7 @@ def dashboardd():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM PatientList")
+    result = cur.execute("SELECT * FROM Patient")
 
     patients = cur.fetchall()
 
@@ -308,14 +308,15 @@ def addpat():
 
     form = PatientForm(request.form)
     if request.method == 'POST' : #and form.validate():
-        PatientName = str(form.PatientName.data)
-        Address = str(form.Address.data)
-        ServID = str(form.ServID.data)
-        Price = str(form.Price.data)
+        print form.PatientName.data
+        Patient_name = str(form.PatientName.data)
+        Patient_address = str(form.Address.data)
+        service = str(form.ServID.data)
+        price = str(form.Price.data)
         # Create Cursor
         cur = mysql.connection.cursor()
         # Execute
-        cur.execute("INSERT INTO Patient( PatientName,Address,ServID,Price) VALUES(%s,%s,%s,%s)",(PatientName,Address,ServID,Price))
+        cur.execute("INSERT INTO Patient( Patient_name,Patient_address,service,price) VALUES(%s,%s,%s,%s)",(Patient_name,Patient_address,service,price))
 
         # Commit to DB
         mysql.connection.commit()
@@ -330,7 +331,7 @@ def addpat():
         flash('Patient Created', 'danger')
 
     cur = mysql.connection.cursor()
-    result = cur.execute("SELECT ID , ServName FROM ServList")
+    result = cur.execute("SELECT ID , ServName FROM Patient")
     serv = cur.fetchall()
     app.logger.info(type(serv))
     app.logger.info(serv)
