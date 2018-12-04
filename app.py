@@ -308,7 +308,7 @@ def addpat():
 
     form = PatientForm(request.form)
     if request.method == 'POST' : #and form.validate():
-        print form.PatientName.data
+        app.logger.info(form.PatientName.data)
         Patient_name = str(form.PatientName.data)
         Patient_address = str(form.Address.data)
         service = str(form.ServID.data)

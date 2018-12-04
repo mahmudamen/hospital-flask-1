@@ -17,13 +17,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.gritter.css') }}">
 
 
-    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='respond.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='dts.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.10.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='pace.min.js') }}"></script>
 
 
@@ -41,5 +38,9 @@
       {% include 'includes/_messages.html' %}
       {% block body %}{% endblock %}
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
   </body>
 </html>
