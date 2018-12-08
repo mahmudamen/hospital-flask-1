@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, logging, jsonify,json
-from data import Articles
+#from data import Articles
 from wtforms import form, TextField, DecimalField, IntegerField, TextAreaField, SubmitField, RadioField, SelectField
 from flask_bootstrap import Bootstrap
 from flask_json import FlaskJSON, JsonError, json_response, as_json
@@ -27,7 +27,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 app.config['JSON_ADD_STATUS'] = False
 app.config['JSON_DATETIME_FORMAT'] = '%d/%m/%Y %H:%M:%S'
-Articles = Articles()
+#Articles = Articles()
 
 json = FlaskJSON(app)
 # Index
@@ -39,7 +39,7 @@ def index():
 def about():
     form = PatientForm(request.form)
     # app.logger.info(help(form))
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST':# and form.validate():
         PatientName = form.PatientName.data
 
         app.logger.info(PatientName)
@@ -82,6 +82,7 @@ def register():
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
         #password = hash.sha256(str(form.password.data)).hexdigest()
+
         app.logger.info(password)
         app.logger.info(form.password.data)
         # Create cursor
@@ -120,7 +121,8 @@ def login():
             password = data['password']
 
             # Compare Passwords
-            if str(hash.sha256(password_candidate).hexdigest()) == str(password):
+            #if str(hash.sha256(password_candidate).hexdigest()) == str(password):
+            if sha256_crypt.verify(password_candidate, password):
                 # Passed
                 session['logged_in'] = True
                 session['username'] = username
@@ -224,7 +226,7 @@ def dashboardd():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM Patient")
+    result = cur.execute("SELECT * FROM PatientList")
 
     patients = cur.fetchall()
 
@@ -244,7 +246,7 @@ def patient():
     # Get articles
     #result = cur.execute("SELECT * FROM articles")
     # Show articles only from the user logged in
-    result = cur.execute("SELECT * FROM PatientList ")
+    result = cur.execute("SELECT * FROM PatientList")
 
     patients = cur.fetchall()
 
@@ -264,6 +266,7 @@ class PatientForm(Form):
     PatientName = StringField(' ', [validators.Length(min=1, max=200)])
     Address = StringField(' ', [validators.Length(min=1)])
     ServID = SelectField(' ')
+    ServName =StringField(' ')
     Price = DecimalField(' ')
 # serv form class
 class ServForm(Form):
@@ -305,23 +308,36 @@ def add_user():
 @app.route('/addpat', methods=['GET', 'POST'])
 @is_logged_in
 def addpat():
-
     form = PatientForm(request.form)
-    if request.method == 'POST' : #and form.validate():
-        app.logger.info(form.PatientName.data)
-        Patient_name = str(form.PatientName.data)
-        Patient_address = str(form.Address.data)
-        service = str(form.ServID.data)
-        price = str(form.Price.data)
+    if request.method == 'POST' : # and form.validate():
+        PatientName = form.PatientName.data
+        Address = form.Address.data
+        ID = form.ServID.data
+        ServName = form.ServName.data
+        Price = form.ServName.data
+
+        app.logger.info(PatientName)
+        app.logger.info(Address)
+        app.logger.info(Price)
+        app.logger.info(ServName)
+        app.logger.info(Price)
         # Create Cursor
         cur = mysql.connection.cursor()
         # Execute
-        cur.execute("INSERT INTO Patient( Patient_name,Patient_address,service,price) VALUES(%s,%s,%s,%s)",(Patient_name,Patient_address,service,price))
+        cur.execute("SELECT ServName FROM ServList WHERE id = %s", [ID])
+
+        ServName = cur.fetchall()
+        ServName = ServName[0]['ServName']
+        cur.execute('SELECT Price FROM ServList WHERE id = %s', [ID])
+        Price = cur.fetchall()
+        Price = Price[0]['Price']
+        cur.execute("INSERT INTO PatientList( PatientName,Address,ServID,ServName,Price) VALUES(%s,%s,%s,%s,%s)",
+                    (PatientName, Address, ID, ServName, Price))
 
         # Commit to DB
         mysql.connection.commit()
 
-        #Close connection
+        # Close connection
         cur.close()
 
         flash('Patient Created', 'success')
@@ -335,24 +351,32 @@ def addpat():
     serv = cur.fetchall()
     app.logger.info(type(serv))
     app.logger.info(serv)
-    # app.logger.info(serv[0]['ServName'])
-    return render_template('addpat.html', form=form,serv=serv)
+    app.logger.info(serv[0]['ServName'])
+    return render_template('addpat.html', form=form, serv=serv)
 
 # Add patient with bootstrap
 @app.route('/add_patient', methods=['GET', 'POST'])
 @is_logged_in
 def add_patient():
     form = PatientForm(request.form)
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' : #and form.validate():
         PatientName = form.PatientName.data
         Address = form.Address.data
         ServID = form.ServID.data
+        ServName=form.ServName.data
+        Price = form.Price.data
 
         # Create Cursor
         cur = mysql.connection.cursor()
+        cur.execute("SELECT ServName FROM ServList WHERE id = %s", [ServID])
 
+        ServName = cur.fetchall()
+        ServName = ServName[0]['ServName']
+        cur.execute('SELECT Price FROM ServList WHERE id = %s', [ServID])
+        Price = cur.fetchall()
+        Price = Price[0]['Price']
         # Execute
-        cur.execute("INSERT INTO Patient( PatientName, Address,ServID ,UserName) VALUES(%s,%s , %s, %s)",(PatientName, Address ,ServID , session['username']))
+        cur.execute("INSERT INTO PatientList( PatientName, Address,ServID ,ServName,Price,UserName) VALUES(%s,%s ,%s,%s, %s, %s)",(PatientName, Address ,ServID ,ServName,Price ,session['username']))
 
         # Commit to DB
         mysql.connection.commit()
@@ -363,8 +387,14 @@ def add_patient():
         flash('Patient Created', 'success')
 
         return redirect(url_for('dashboardd'))
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT ID , ServName FROM ServList")
+    serv = cur.fetchall()
+    app.logger.info(type(serv))
+    app.logger.info(serv)
+    app.logger.info(serv[0]['ServName'])
 
-    return render_template('add_patient.html', form=form)
+    return render_template('add_patient.html', form=form, serv=serv)
 # add serv
 @app.route('/add_servList', methods=['GET', 'POST'])
 def add_servList():
@@ -439,7 +469,7 @@ def edit_patient(id):
     cur = mysql.connection.cursor()
 
     # Get article by id
-    result = cur.execute("SELECT * FROM Patient WHERE id = %s", [id])
+    result = cur.execute("SELECT * FROM PatientList WHERE id = %s", [id])
 
     article = cur.fetchone()
     cur.close()

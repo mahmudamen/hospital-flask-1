@@ -7,7 +7,7 @@
                             </button>
                             <h3>  <small> مرحبا {{session.username}}</small></h3>
                         </div>
-  <a class="btn btn-success" id="refresh" href="/addpat"> اضافة مريض</a>
+  <a class="btn btn-success" id="refresh" href="/add_patient"> اضافة مريض</a>
   <hr>
 <div class="panel panel-inverse" data-sortable-id="table-basic-7">
                         <div class="panel-heading">
@@ -20,9 +20,9 @@
 							<div class="table-responsive">
 						<table id="tabMH" class="table table-striped">
     <tr>
-      <th>ID</th>
-      <th>name</th>
-      <th>address</th>
+      <th>م</th>
+      <th>اسم </th>
+      <th>عنوان</th>
       <th>Service</th>
       <th>Price</th>
       <th>Date</th>
@@ -33,12 +33,12 @@
     {% set num = 1 %}
     {% for patient in patients %}
       <tr>
-        <td>{{patient.id}}</td>
-        <td>{{patient.Patient_name}}</td>
-        <td>{{patient.Patient_address}}</td>
-        <td>{{patient.service}}</td>
-        <td>{{patient.price}}</td>
-        <td>{{patient.CreateDate}}</td>
+                          <td>{{patient.ID}}</td>
+                          <td>{{patient.PatientName}}</td>
+                          <td>{{patient.Address}}</td>
+                         <td>{{patient.ServName}}</td>
+                            <td>{{patient.Price}}</td>
+                          <td>{{patient.CreateDate}}</td>
         <td><a href="edit_patient/{{patient.ID}}" class="btn btn-default pull-right">edit</a></td>
         <td>
           <form action="{{url_for('delete_patient', id=patient.ID)}}" method="post">

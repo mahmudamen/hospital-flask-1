@@ -31,14 +31,11 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">الخدمة</label>
                                     <div class="col-md-9" style="width:45%" >
-                                        <input type="text" name="ServID" style="width:50%"  class="form-control" placeholder=" رقم الخدمة" >
-
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">السعر</label>
-                                    <div class="col-md-9">
-                                        <input name="Price" style="width:35%" type="text" class="form-control" placeholder=" السعر" >
+                                <select id="ServID" name="ServID">
+                                    {% for item in serv %}
+                                        <option value={{item.ID}}>{{ item.ServName }}</option>
+                                    {% endfor %}
+                                </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

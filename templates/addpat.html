@@ -7,28 +7,6 @@
     <title>Title</title>
 </head>
 <body>
-
-  <script type="text/javascript">
-    function save() {
-      $('input[name=PatientName]').val()
-      $.post( "addpat",
-      {
-        PatientName :  $('input[name=PatientName]').val(),
-        Address :  $('input[name=Address]').val() ,
-        ServID :  $('input[name=ServID]').val() ,
-        Price :  $('input[name=Price]').val()
-
-
-       } );
-
-       return true;
-    }
-
-    $('#save').on('click',function(){
-      save();
-    })
-  </script>
-
 <div dir="" class="row">
 <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
     <div class="panel-heading">
@@ -38,7 +16,7 @@
 
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" method="POST" action="">
+                            <form class="form-horizontal" method="POST" action="/addpat">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"> اسم المريض</label>
                                     <div class="col-md-9">
@@ -74,7 +52,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <button id="save" onclick="save()" type="button" class="btn btn-success " >Save</button>
+                            <button type="submit" class="btn btn-sm btn-success"> حفظ</button>
                         </div>
                     </div>
 </div>

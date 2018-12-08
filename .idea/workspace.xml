@@ -4,17 +4,10 @@
     <list default="true" id="b8a502d9-76b7-4e02-8475-d73d6dd55d12" name="Default Changelist" comment="html edit patient">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery-1.10.2.intellisense.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery-1.10.2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.skip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.slimscroll.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.treeview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.treeview.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.validate-vsdoc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.validate.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.validate.unobtrusive.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jquery.validate.unobtrusive.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/addpat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addpat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboardd.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboardd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,53 +19,65 @@
     <favorites_list name="myflaskapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="457" column="42" selection-start-line="457" selection-start-column="42" selection-end-line="457" selection-end-column="42" />
+            <state relative-caret-position="158">
+              <caret line="370" column="74" selection-start-line="370" selection-start-column="74" selection-end-line="370" selection-end-column="74" />
               <folding>
                 <element signature="e#0#107#0" expanded="true" />
-                <element signature="e#1222#1257#0" />
-                <element signature="e#3468#4596#0" />
-                <element signature="e#4649#4896#0" />
-                <element signature="e#4969#5416#0" />
-                <element signature="e#5469#5941#0" />
-                <element signature="e#5992#6464#0" />
-                <element signature="e#6528#6628#0" />
-                <element signature="e#6704#7187#0" />
-                <element signature="e#7244#7726#0" />
-                <element signature="e#7777#7813#0" />
-                <element signature="e#8095#8178#0" />
-                <element signature="e#8225#8342#0" />
-                <element signature="e#9108#10071#0" />
-                <element signature="e#10191#10890#0" />
-                <element signature="e#10979#11661#0" />
-                <element signature="e#11773#12754#0" />
-                <element signature="e#14396#15398#0" />
-                <element signature="e#15517#16529#0" />
-                <element signature="e#16640#16929#0" />
-                <element signature="e#17026#17317#0" />
-                <element signature="e#17420#17723#0" />
-                <element signature="e#17823#18114#0" />
-                <element signature="e#18184#18860#0" />
-                <element signature="e#19519#19569#0" />
+                <element signature="e#1316#1937#0" />
+                <element signature="e#1988#2399#0" />
+                <element signature="e#2400#2401#0" />
+                <element signature="e#2487#3379#0" />
+                <element signature="e#3456#4667#0" />
+                <element signature="e#4720#4967#0" />
+                <element signature="e#5040#5485#0" />
+                <element signature="e#5538#6010#0" />
+                <element signature="e#6061#6533#0" />
+                <element signature="e#6597#6697#0" />
+                <element signature="e#6773#7256#0" />
+                <element signature="e#7313#7794#0" />
+                <element signature="e#7845#7881#0" />
+                <element signature="e#8163#8246#0" />
+                <element signature="e#8293#8410#0" />
+                <element signature="e#8506#9066#0" />
+                <element signature="e#11420#12102#0" />
+                <element signature="e#12214#13195#0" />
+                <element signature="e#13323#14816#0" />
+                <element signature="e#14916#15926#0" />
+                <element signature="e#16045#17057#0" />
+                <element signature="e#17168#17457#0" />
+                <element signature="e#17554#17845#0" />
+                <element signature="e#17948#18251#0" />
+                <element signature="e#18348#18639#0" />
+                <element signature="e#18709#19385#0" />
+                <element signature="e#19422#19894#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/item.html">
+        <entry file="file://$PROJECT_DIR$/templates/add_patient.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="315">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/dashboardd.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -89,11 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SelectField</find>
-      <find>edit_pat</find>
-      <find>regist</find>
-      <find>selectField</find>
-      <find>/</find>
       <find>index</find>
       <find>f</find>
       <find>db</find>
@@ -106,8 +106,6 @@
       <find>serv</find>
       <find>delete_serv</find>
       <find>edit_pa</find>
-      <find>addpat</find>
-      <find>patient</find>
       <find>add_p</find>
       <find>register</find>
       <find>add_patient</find>
@@ -118,7 +116,14 @@
       <find>item</find>
       <find>add_pat</find>
       <find>dash</find>
+      <find>patient()</find>
+      <find>patient</find>
+      <find>dashboardd</find>
+      <find>PatientList</find>
+      <find>addp</find>
+      <find>add_</find>
       <find>PatientForm</find>
+      <find>addpat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,26 +167,26 @@
         <option value="$PROJECT_DIR$/templates/_layoutpatient.html" />
         <option value="$PROJECT_DIR$/templates/_layoutLogin.html" />
         <option value="$PROJECT_DIR$/templates/_layoutHome.html" />
-        <option value="$PROJECT_DIR$/templates/add_patient.html" />
         <option value="$PROJECT_DIR$/templates/servlist.html" />
-        <option value="$PROJECT_DIR$/templates/addpat.html" />
         <option value="$PROJECT_DIR$/templates/about.html" />
         <option value="$PROJECT_DIR$/templates/includes/_navbar.html" />
         <option value="$PROJECT_DIR$/templates/add_servList.html" />
         <option value="$PROJECT_DIR$/templates/add_item.html" />
-        <option value="$PROJECT_DIR$/templates/dashboardd.html" />
-        <option value="$PROJECT_DIR$/templates/patient.html" />
         <option value="$PROJECT_DIR$/templates/edit_item.html" />
         <option value="$PROJECT_DIR$/templates/item.html" />
+        <option value="$PROJECT_DIR$/templates/addpat.html" />
+        <option value="$PROJECT_DIR$/templates/patient.html" />
+        <option value="$PROJECT_DIR$/templates/add_patient.html" />
+        <option value="$PROJECT_DIR$/templates/dashboardd.html" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="97" />
-    <option name="y" value="170" />
-    <option name="width" value="1141" />
-    <option name="height" value="639" />
+    <option name="x" value="67" />
+    <option name="y" value="27" />
+    <option name="width" value="1131" />
+    <option name="height" value="646" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -211,12 +216,12 @@
         <subPane>
           <expand>
             <path>
-              <item name="myflaskappz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myflaskappz" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital-flask-1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital-flask-1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="myflaskappz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myflaskappz" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital-flask-1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hospital-flask-1" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -224,10 +229,13 @@
         </subPane>
       </pane>
       <pane id="Course" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -276,6 +284,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
@@ -296,6 +305,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541057836013</updated>
+      <workItem from="1544195259509" duration="319000" />
     </task>
     <task id="LOCAL-00001" summary="test 2">
       <created>1541203582918</created>
@@ -426,6 +436,9 @@
     <option name="localTasksCounter" value="19" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="319000" />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -437,11 +450,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1299" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.207502" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.16121309" />
       <window_info id="Structure" order="1" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
       <window_info id="Favorites" order="2" sideWeight="0.5021008" side_tool="true" weight="0.1452514" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Learn" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49720672" visible="true" weight="0.18336163" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.16440542" weight="0.5171289" />
@@ -451,14 +468,23 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32935154" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49002394" weight="0.2665535" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.509976" side_tool="true" visible="true" weight="0.08319185" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.88667196" weight="0.34634975" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.11412609" side_tool="true" visible="true" weight="0.22413793" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.8858739" weight="0.3448276" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="551" height="573" id="Documentation" order="3" weight="0.32957292" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32960895" />
       <window_info anchor="right" id="R Packages" order="5" weight="0.32801276" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Palette" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="SciView" order="9" />
+      <window_info anchor="right" id="Database" order="10" />
+      <window_info anchor="right" id="Palette&#9;" order="11" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.19792499" />
@@ -482,6 +508,9 @@
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32960895" />
       <window_info anchor="right" id="R Packages" order="5" weight="0.32801276" />
     </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -539,17 +568,6 @@
     <MESSAGE value="add edit table user python html django" />
     <MESSAGE value="html edit patient" />
     <option name="LAST_COMMIT_MESSAGE" value="html edit patient" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>435</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/js/script.js" />
@@ -775,20 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_patient.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="33" column="137" selection-start-line="33" selection-start-column="137" selection-end-line="33" selection-end-column="137" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -810,52 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/servlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="11" selection-end-line="39" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="19" column="61" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboardd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addpat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add_servList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="85" selection-start-line="17" selection-start-column="79" selection-end-line="17" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/edit_serv.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -863,17 +821,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patient.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/edit_item.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
           <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="1218" column="7" selection-start-line="1218" selection-start-column="7" selection-end-line="1218" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -889,43 +847,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/templates/add_servList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="1218" column="7" selection-start-line="1218" selection-start-column="7" selection-end-line="1218" selection-end-column="7" />
+        <state relative-caret-position="465">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add_item.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/addpat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="31" selection-start-line="31" selection-end-line="40" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/servlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/patient.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="77" lean-forward="true" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add_patient.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboardd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="457" column="42" selection-start-line="457" selection-start-column="42" selection-end-line="457" selection-end-column="42" />
+        <state relative-caret-position="158">
+          <caret line="370" column="74" selection-start-line="370" selection-start-column="74" selection-end-line="370" selection-end-column="74" />
           <folding>
             <element signature="e#0#107#0" expanded="true" />
-            <element signature="e#1222#1257#0" />
-            <element signature="e#3468#4596#0" />
-            <element signature="e#4649#4896#0" />
-            <element signature="e#4969#5416#0" />
-            <element signature="e#5469#5941#0" />
-            <element signature="e#5992#6464#0" />
-            <element signature="e#6528#6628#0" />
-            <element signature="e#6704#7187#0" />
-            <element signature="e#7244#7726#0" />
-            <element signature="e#7777#7813#0" />
-            <element signature="e#8095#8178#0" />
-            <element signature="e#8225#8342#0" />
-            <element signature="e#9108#10071#0" />
-            <element signature="e#10191#10890#0" />
-            <element signature="e#10979#11661#0" />
-            <element signature="e#11773#12754#0" />
-            <element signature="e#14396#15398#0" />
-            <element signature="e#15517#16529#0" />
-            <element signature="e#16640#16929#0" />
-            <element signature="e#17026#17317#0" />
-            <element signature="e#17420#17723#0" />
-            <element signature="e#17823#18114#0" />
-            <element signature="e#18184#18860#0" />
-            <element signature="e#19519#19569#0" />
+            <element signature="e#1316#1937#0" />
+            <element signature="e#1988#2399#0" />
+            <element signature="e#2400#2401#0" />
+            <element signature="e#2487#3379#0" />
+            <element signature="e#3456#4667#0" />
+            <element signature="e#4720#4967#0" />
+            <element signature="e#5040#5485#0" />
+            <element signature="e#5538#6010#0" />
+            <element signature="e#6061#6533#0" />
+            <element signature="e#6597#6697#0" />
+            <element signature="e#6773#7256#0" />
+            <element signature="e#7313#7794#0" />
+            <element signature="e#7845#7881#0" />
+            <element signature="e#8163#8246#0" />
+            <element signature="e#8293#8410#0" />
+            <element signature="e#8506#9066#0" />
+            <element signature="e#11420#12102#0" />
+            <element signature="e#12214#13195#0" />
+            <element signature="e#13323#14816#0" />
+            <element signature="e#14916#15926#0" />
+            <element signature="e#16045#17057#0" />
+            <element signature="e#17168#17457#0" />
+            <element signature="e#17554#17845#0" />
+            <element signature="e#17948#18251#0" />
+            <element signature="e#18348#18639#0" />
+            <element signature="e#18709#19385#0" />
+            <element signature="e#19422#19894#0" />
           </folding>
         </state>
       </provider>
